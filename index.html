@@ -1,0 +1,835 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twoja Przemiana – Justyna Siwek | Psycholog | Coach | Terapeuta</title>
+    <meta name="description" content="Gabinet psychologiczny Twoja Przemiana - Justyna Siwek. Psycholog, coach, terapeuta poznawczo-behawioralna. Rozwój osobisty, diagnoza i terapia, coaching kariery.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        /* Fade-in animation for sections */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children animation */
+        .fade-section .fade-child {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-section.is-visible .fade-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-section.is-visible .fade-child:nth-child(1) { transition-delay: 0.1s; }
+        .fade-section.is-visible .fade-child:nth-child(2) { transition-delay: 0.25s; }
+        .fade-section.is-visible .fade-child:nth-child(3) { transition-delay: 0.4s; }
+        .fade-section.is-visible .fade-child:nth-child(4) { transition-delay: 0.55s; }
+
+        /* Active nav link */
+        .nav-link.active {
+            border-bottom: 2px solid #1d1d1d;
+            color: #000;
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* Hamburger animation */
+        .hamburger span {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        /* Service detail panels */
+        .service-detail {
+            animation: slideDown 0.4s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shrink navbar on scroll */
+        .navbar-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: white;
+            transition: box-shadow 0.3s ease;
+        }
+        .navbar-wrap.scrolled {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .navbar-wrap .nav-logo {
+            max-height: 5rem; /* md:h-20 */
+            opacity: 1;
+            transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+        }
+        .navbar-wrap.scrolled .nav-logo {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .navbar-wrap .nav-inner {
+            transition: padding 0.35s ease;
+        }
+        .navbar-wrap.scrolled .nav-inner {
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+        }
+    </style>
+</head>
+<body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
+
+    <!-- Navbar -->
+    <div id="navbar-wrap" class="navbar-wrap">
+    <nav class="nav-inner flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="#">
+                <img src="img/logo.png" alt="Twoja Przemiana - Justyna Siwek" class="nav-logo h-14 md:h-20 w-auto">
+            </a>
+        </div>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+            <a href="#" class="nav-link active border-b-2 border-black pb-1 transition-all">Strona główna</a>
+            <a href="#o-mnie" class="nav-link hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="#rozwoj" class="nav-link hover:text-black pb-1 transition-all">Rozwój</a>
+            <a href="#diagnoza" class="nav-link hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="#zapisy" class="nav-link hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="#blog" class="nav-link hover:text-black pb-1 transition-all">Blog</a>
+            <a href="#kontakt" class="nav-link hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
+    </nav>
+    </div><!-- /navbar-wrap -->
+    <!-- Spacer for fixed navbar -->
+    <div id="navbar-spacer"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;">
+        <div class="flex flex-col gap-4 py-4 text-sm font-medium text-gray-800">
+            <a href="#" class="nav-link-mobile py-1 border-b border-gray-100">Strona główna</a>
+            <a href="#o-mnie" class="nav-link-mobile py-1 border-b border-gray-100">O mnie</a>
+            <a href="#rozwoj" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój</a>
+            <a href="#diagnoza" class="nav-link-mobile py-1 border-b border-gray-100">Diagnoza i terapia</a>
+            <a href="#zapisy" class="nav-link-mobile py-1 border-b border-gray-100">Umów termin</a>
+            <a href="#blog" class="nav-link-mobile py-1 border-b border-gray-100">Blog</a>
+            <a href="#kontakt" class="nav-link-mobile py-1">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[300px] md:h-[420px] flex items-center bg-[#5c6d62] overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('img/background.png'); opacity: 0.85;"></div>
+        <div class="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-[#4b5b50]/60 to-[#3b4b40]/90"></div>
+
+        <!-- Justyna Photo (anchored to max-w container) -->
+        <div class="max-w-[1100px] mx-auto w-full h-full relative hidden md:block">
+            <div class="absolute bottom-0 left-0 z-5 h-full flex items-end">
+                <img src="img/hero-main.png" alt="Justyna Siwek" class="h-[400px] w-auto object-contain">
+            </div>
+        </div>
+
+        <div class="max-w-[1100px] mx-auto w-full px-6 absolute inset-0 z-10 flex items-center justify-center md:justify-end">
+            <div class="w-full md:w-[55%] text-center md:text-right md:-mt-8">
+                <h1 class="text-white text-2xl md:text-4xl font-semibold tracking-[0.15em] mb-2 uppercase" style="font-family: 'Inter', sans-serif;">JUSTYNA SIWEK</h1>
+                <p class="text-white text-xs md:text-base tracking-[0.25em] mb-4 md:mb-6 font-light uppercase">- Psycholog | Coach | Terapeuta</p>
+                <h2 class="text-[#c4a660] text-lg md:text-[2.2rem] leading-tight font-medium tracking-[0.08em]" style="font-family: 'Trajan Pro', 'Cinzel', serif; text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
+                    TWOJA PRZEMIANA MOŻE<br />ROZPOCZĄĆ SIĘ JUŻ DZIŚ
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area (Services + Widget) -->
+    <section id="uslugi" class="fade-section bg-[#9eb2a2] relative pt-8 pb-12 md:pb-28 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto relative flex flex-col md:flex-row md:justify-between">
+            
+            <!-- Services Left Side -->
+            <div class="w-full md:w-[69%]">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] mb-8 md:mb-10 tracking-wide">
+                    W czym mogę Ci pomóc
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Card 1: Rozwój osobisty -->
+                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
+                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
+                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
+                            <i data-lucide="heart-handshake" class="text-white w-9 h-9"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój osobisty</h3>
+                        <button onclick="scrollToSection('rozwoj')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
+                            Dowiedz się więcej
+                        </button>
+                    </div>
+
+                    <!-- Card 2: Diagnoza i terapia -->
+                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
+                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
+                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
+                            <i data-lucide="brain" class="text-white w-9 h-9"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-center mb-6">Diagnoza i terapia</h3>
+                        <button onclick="scrollToSection('diagnoza')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
+                            Dowiedz się więcej
+                        </button>
+                    </div>
+
+                    <!-- Card 3: Rozwój zawodowy -->
+                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
+                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
+                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
+                            <i data-lucide="briefcase" class="text-white w-9 h-9"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój zawodowy</h3>
+                        <button onclick="scrollToSection('rozwoj')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
+                            Dowiedz się więcej
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZnanyLekarz Widget (Overlapping) -->
+            <div id="umow-termin" class="static md:absolute md:right-[calc(0%+20px)] md:-top-[140px] z-20 w-full max-w-[300px] md:max-w-none md:w-[300px] mx-auto md:mx-0 mt-10 md:mt-0 rounded-2xl shadow-2xl overflow-hidden" style="background: linear-gradient(160deg, #2a2a2a 0%, #1a1a1a 50%, #2a2520 100%);">
+                <!-- Top gold accent line -->
+                <div class="h-[2px] w-full" style="background: linear-gradient(90deg, transparent, #c4a660, transparent);"></div>
+                
+                <!-- ZnanyLekarz Branding -->
+                <div class="flex items-center justify-center gap-2 pt-5 pb-4">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 text-[#c4a660]" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span class="text-[#c4a660] font-semibold text-lg tracking-wide">ZnanyLekarz</span>
+                </div>
+
+                <!-- Profile Photo -->
+                <div class="flex justify-center mb-4">
+                    <div class="w-20 h-20 rounded-full border-2 border-[#c4a660]/40 p-[3px]">
+                        <img src="img/justyna-siwek.jpg" alt="Justyna Siwek" class="w-full h-full rounded-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Name & Title -->
+                <div class="text-center px-6 mb-6">
+                    <h3 class="text-white text-xl font-semibold mb-1">Justyna Siwek</h3>
+                    <p class="text-gray-400 text-xs tracking-widest uppercase">PSYCHOLOG | COACH | TERAPEUTA</p>
+                </div>
+
+                <!-- Buttons -->
+                <div class="px-6 pb-6 flex flex-col gap-3">
+                    <a href="https://www.znanylekarz.pl/justyna-siwek/psycholog/warszawa" target="_blank" class="block w-full bg-[#c4a660] hover:bg-[#b09455] text-black font-semibold py-3 rounded-lg text-center text-sm transition-colors">
+                        Umów wizytę online
+                    </a>
+                    <a href="https://www.znanylekarz.pl/justyna-siwek/psycholog/warszawa" target="_blank" class="block w-full border border-gray-500 hover:border-gray-300 text-gray-300 hover:text-white font-medium py-3 rounded-lg text-center text-sm transition-colors">
+                        Zobacz profil
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- O mnie Section -->
+    <section id="o-mnie" class="fade-section bg-[#f0e6c5] py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+            <!-- Photo -->
+            <div class="w-full md:w-[35%] flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-3 bg-[#c4a660]/20 rounded-2xl rotate-3"></div>
+                    <img src="img/justyna-siwek.jpg" alt="mgr Justyna Siwek" class="relative rounded-2xl shadow-xl w-[250px] md:w-[320px] h-auto object-cover">
+                </div>
+            </div>
+            <!-- Text -->
+            <div class="w-full md:w-[65%]">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] mb-2 tracking-wide">O mnie</h2>
+                <div class="h-[2px] w-20 bg-[#c4a660] mb-8"></div>
+                <p class="text-base leading-relaxed mb-5">
+                    Jestem psychologiem, dyplomowanym coachem oraz terapeutką, pracującą w nurcie poznawczo-behawioralnym (CBT). W mojej pracy z Klientem najważniejsza jest empatia, relacja i efekty. Wsłuchuję się w oczekiwania dobierając metody pracy terapeutycznej lub coaching'owej do indywidualnych potrzeb i rodzaju problemów, które pomagam Klientowi pokonać.
+                </p>
+                <p class="text-base leading-relaxed mb-5">
+                    Istotne jest dla mnie, aby Klient w możliwie najkrótszym czasie odczuł poprawę swojej sytuacji oraz wzrost satysfakcji ze swojego życia i relacji.
+                </p>
+                <p class="text-base leading-relaxed mb-5">
+                    Ukończyłam psychologię na Uniwersytecie Warszawskim, akademicki kurs coachingu na Uniwersytecie SWPS, obecnie jestem w trakcie 4-letniego całościowego szkolenia psychoterapeutycznego w Szkole Psychoterapii Poznawczo-Behawioralnej WSB-NLU.
+                </p>
+                <p class="text-base leading-relaxed mb-6">
+                    Mam doświadczenie menedżerskie w pracy w HR, PR oraz sprzedaży, które wykorzystuję w coachingu kariery i menedżerskim, a także coachingu wizerunkowym.
+                </p>
+                <p class="text-sm font-semibold text-[#1d1d1d]">mgr Justyna Siwek</p>
+                <p class="text-sm text-[#c4a660] italic">Psycholog · Coach · Terapeuta CBT</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rozwój Section (full page) -->
+    <section id="rozwoj" class="fade-section bg-white py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] mb-2 tracking-wide">W czym mogę Ci pomóc</h2>
+            <div class="h-[2px] w-20 bg-[#c4a660] mb-10"></div>
+
+            <!-- Rozwój osobisty -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="heart-handshake" class="text-white w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-[#1f2922]">Rozwój osobisty</h3>
+                </div>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">
+                    Jeśli czujesz, że nie dogadujesz się z innymi, nie potrafisz mówić otwarcie o swoich opiniach i uczuciach, a wszyscy wchodzą Ci na głowę – mogę pomóc rozwiązywać problemy w relacjach:
+                </p>
+                <ul class="list-none space-y-2 mb-6 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę jak rozwijać asertywność,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę skutecznej i otwartej komunikacji,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę stawiania granic.</li>
+                </ul>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">
+                    Jeśli Twoje życie Cię nie zadowala w pełni, emocje Cię przytłaczają, masz dużo obaw i trudności w podejmowaniu decyzji, albo dużo stresu i czujesz że nie dajesz rady – pomogę:
+                </p>
+                <ul class="list-none space-y-2 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> lepiej radzić sobie ze stresem,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczyć się kontroli emocji,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zwiększyć swoją pewność siebie,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> podjąć trudne decyzje,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pozbyć się bezsenności,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać prokrastynację,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pozbyć się perfekcjonizmu,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zmienić styl życia.</li>
+                </ul>
+            </div>
+
+            <!-- Rozwój zawodowy -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="briefcase" class="text-white w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl md:text-2xl font-bold text-[#1f2922]">Rozwój zawodowy</h3>
+                </div>
+                <p class="text-sm text-[#c4a660] italic mb-4">#coaching kariery #executive coaching #coaching menedżerski</p>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">
+                    Jeśli Twoja obecna sytuacja zawodowa jest źródłem Twojego stresu, czujesz wypalenie zawodowe, albo masz trudności w znalezieniu nowej, satysfakcjonującej pracy – mogę pomóc:
+                </p>
+                <ul class="list-none space-y-2 mb-6 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie z wypaleniem zawodowym,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> określić predyspozycje w oparciu o Twoje cechy charakteru, osobowość oraz wartości,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zmienić zawód, pracę, zaplanować i wdrożyć zmiany.</li>
+                </ul>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">
+                    Jeśli jesteś menedżerem, zarządzasz ludźmi lub projektami, ale nie przychodzi Ci to łatwo. Ciągle nie masz czasu, stresujesz się, ale nie wiesz jak to zmienić, odnosisz wrażenie, że pracownicy nie rozumieją Twojego punktu widzenia, a Twoja skuteczność jest niższa niż oczekujesz – możemy wspólnie przyjrzeć się, jak to zmienić:
+                </p>
+                <ul class="list-none space-y-2 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> rozwinąć swoje umiejętności menedżerskie w zakresie zarządzania zespołem i projektami,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> opanować skuteczną, coachingową komunikację z pracownikami,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> przestać się bać wystąpień publicznych na spotkaniach i przed kamerą,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> lepiej budować swój profesjonalny wizerunek przed szefami i współpracownikami.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnoza i terapia Section (full page) -->
+    <section id="diagnoza" class="fade-section bg-[#f0e6c5] py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="brain" class="text-white w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] tracking-wide">Diagnoza i terapia</h2>
+            </div>
+            <div class="h-[2px] w-20 bg-[#c4a660] ml-[60px] mb-8"></div>
+            <p class="text-base text-gray-700 leading-relaxed mb-4">
+                Czujesz, że masz problem, z którym sobie nie możesz już poradzić, Twoje życie przez to nie jest w pełni satysfakcjonujące, cierpisz Ty, może także Twoi bliscy. To może być sytuacja dla Ciebie nowa, jak śmierć bliskiej osoby, czy jej poważna choroba, albo problemy, które ciągną się od lat. Utrudniają one codzienne funkcjonowanie, wpływają na pracę, naukę, rodzinę i relacje z innymi. Mogę Ci skutecznie pomóc:
+            </p>
+            <ul class="list-none space-y-2 pl-4">
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zdiagnozować problem, ustalić, czy jest to jedno z zaburzeń psychicznych, doradzić jak dalej leczyć i z jakiej pomocy warto skorzystać,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie z negatywnymi emocjami w trudnej sytuacji życiowej,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać depresję i obniżony nastrój,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać uzależnienia takie jak pracoholizm, zakupoholizm, skłonności do gier i hazardu, ekranów,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie w sytuacji współuzależnienia lub trudności związanych z byciem członkiem rodziny osoby uzależnionej (DDA),</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pozbyć się perfekcjonizmu,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zrozumieć problemy psychologiczne bliskich osób.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Umów termin Section (full page) -->
+    <section id="zapisy" class="fade-section bg-[#3b4b40] py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#c4a660] mb-2 tracking-wide">Umów termin</h2>
+            <div class="h-[2px] w-20 bg-[#c4a660] mb-10"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <!-- Info column -->
+                <div class="text-white space-y-6">
+                    <div class="flex items-start gap-3">
+                        <span class="text-[#c4a660] text-lg mt-0.5">✓</span>
+                        <p class="text-base leading-relaxed">Zapraszam do bezpłatnej konsultacji telefonicznej (ok. 20 min), podczas której możemy omówić możliwości i formę współpracy.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-[#c4a660] text-lg mt-0.5">✓</span>
+                        <p class="text-base leading-relaxed">Sesje coachingowe oraz psychologiczne odbywają się online lub stacjonarnie w Warszawie i trwają 50 min.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-[#c4a660] text-lg mt-0.5">✓</span>
+                        <p class="text-base leading-relaxed">Umawianie spotkań jest możliwe poprzez kalendarz na portalu ZnanyLekarz.pl lub telefonicznie.</p>
+                    </div>
+
+                    <div class="border-t border-white/20 pt-6 mt-6 space-y-5">
+                        <div>
+                            <h3 class="text-[#c4a660] font-semibold mb-2">Sesje online</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed">Po umówieniu spotkania Klient otrzyma link do spotkania w Google Meet. Udział w spotkaniu nie wymaga instalacji oprogramowania na komputerze lub smartfonie.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-[#c4a660] font-semibold mb-2">Sesje stacjonarne</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed">Spotkania stacjonarne odbywają się w piątki w Warszawie przy ul. Józefa Hoene-Wrońskiego 15/7.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-white/20 pt-6 mt-6 space-y-5">
+                        <div>
+                            <h3 class="text-[#c4a660] font-semibold mb-2">Płatności</h3>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>☛ BLIK na nr tel. 883 956 256</li>
+                                <li>☛ Revolut: justyn2fz9</li>
+                                <li>☛ Gotówka – tylko podczas sesji stacjonarnej.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[#c4a660] font-semibold mb-2">Cennik</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed">Konsultacje psychologiczne, terapia psychologiczna oraz coaching – 180 zł.<br>Coaching menedżerski – 200 zł.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA column -->
+                <div class="flex flex-col items-center gap-6">
+                    <div class="bg-white/10 rounded-2xl p-8 text-center w-full">
+                        <i data-lucide="calendar-check" class="text-[#c4a660] w-12 h-12 mx-auto mb-4"></i>
+                        <h3 class="text-white text-lg font-semibold mb-3">Umów się teraz</h3>
+                        <p class="text-gray-300 text-sm mb-6">Skorzystaj z wygodnego kalendarza online na portalu ZnanyLekarz lub zadzwoń.</p>
+                        <a href="https://www.znanylekarz.pl/justyna-siwek/psycholog/warszawa" target="_blank" class="block w-full bg-[#c4a660] hover:bg-[#b09455] text-black font-semibold py-3 rounded-lg text-center text-sm transition-colors mb-3">
+                            Umów wizytę online
+                        </a>
+                        <a href="tel:+48883956256" class="block w-full border border-white/30 hover:border-white text-white font-medium py-3 rounded-lg text-center text-sm transition-colors">
+                            Zadzwoń: 883 956 256
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opinie Section -->
+    <section class="fade-section bg-[#222222] py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#c4a660] mb-2 text-center tracking-wide">Opinie</h2>
+            <div class="h-[2px] w-20 bg-[#c4a660] mx-auto mb-12"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="fade-child rounded-2xl overflow-hidden shadow-lg">
+                    <img src="img/opinia1.png" alt="Opinia pacjenta" class="w-full h-auto">
+                </div>
+                <div class="fade-child rounded-2xl overflow-hidden shadow-lg">
+                    <img src="img/opinia2.png" alt="Opinia pacjenta" class="w-full h-auto">
+                </div>
+                <div class="fade-child rounded-2xl overflow-hidden shadow-lg">
+                    <img src="img/opinia3.png" alt="Opinia pacjenta" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="fade-section bg-[#f1ebdb] relative py-12 md:py-20 px-4 md:px-6 overflow-hidden">
+        <!-- Decorative Star/Sparkle -->
+        <div class="absolute right-0 bottom-10 opacity-40">
+            <svg width="150" height="150" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0 C 50 40 60 50 100 50 C 60 50 50 60 50 100 C 50 60 40 50 0 50 C 40 50 50 40 50 0 Z" fill="white"/>
+            </svg>
+        </div>
+
+        <div class="max-w-[1100px] mx-auto">
+            <!-- Blog Header -->
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] tracking-wide">Blog</h2>
+                <div class="flex items-center gap-3">
+                    <span id="blog-page-info" class="text-sm text-gray-500 mr-1"></span>
+                    <button id="blog-prev" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="blog-next" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Blog Cards Grid (top 3 - large) -->
+            <div id="blog-grid-main" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">
+                <!-- Rendered dynamically from blog/posts.js -->
+            </div>
+
+            <!-- More blog posts row (remaining - small) -->
+            <div id="blog-grid-more" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8 relative z-10">
+                <!-- Rendered dynamically from blog/posts.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="fade-section bg-[#3b4b40] py-12 md:py-20 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#c4a660] tracking-wide">Kontakt</h2>
+                <div class="h-[2px] w-20 bg-[#c4a660] mx-auto mt-2 mb-6"></div>
+            </div>
+            <div class="flex flex-col items-center max-w-xl mx-auto">
+                <!-- Contact Info -->
+                <div class="text-white text-center">
+                    <h3 class="text-xl font-semibold mb-6 text-[#c4a660]">Gabinet psychologiczny<br>TWOJA PRZEMIANA</h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center justify-center gap-3">
+                            <i data-lucide="user" class="text-[#c4a660] w-5 h-5 flex-shrink-0"></i>
+                            <span>Justyna Siwek</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-3">
+                            <i data-lucide="phone" class="text-[#c4a660] w-5 h-5 flex-shrink-0"></i>
+                            <a href="tel:+48883956256" class="hover:text-[#c4a660] transition-colors">883 956 256</a>
+                        </div>
+                        <div class="flex items-center justify-center gap-3">
+                            <i data-lucide="mail" class="text-[#c4a660] w-5 h-5 flex-shrink-0"></i>
+                            <a href="mailto:justyna.siwek@twoja-przemiana.pl" class="hover:text-[#c4a660] transition-colors break-all md:break-normal">justyna.siwek@twoja-przemiana.pl</a>
+                        </div>
+                        <div class="flex items-center justify-center gap-3 pt-4 border-t border-white/20 mt-4">
+                            <i data-lucide="building-2" class="text-[#c4a660] w-5 h-5 flex-shrink-0"></i>
+                            <div>
+                                <p>NIP: 8231233056</p>
+                                <p>REGON: 541491186</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="flex gap-4 mt-8 justify-center">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
+                            <svg class="w-5 h-5 text-[#c4a660] group-hover:text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
+                            <svg class="w-5 h-5 text-[#c4a660] group-hover:text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F172A] py-6 px-6">
+        <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>Twoja Przemiana &copy; Justyna Siwek 2025</p>
+            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
+                <a href="#" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+                <a href="#o-mnie" class="hover:text-[#c4a660] transition-colors">O mnie</a>
+                <a href="#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+                <a href="#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Blog Posts Data -->
+    <script src="blog/posts.js"></script>
+
+    <!-- Render Blog Cards with Pagination -->
+    <script>
+        (function() {
+            const mainGrid = document.getElementById('blog-grid-main');
+            const moreGrid = document.getElementById('blog-grid-more');
+            const prevBtn = document.getElementById('blog-prev');
+            const nextBtn = document.getElementById('blog-next');
+            const pageInfo = document.getElementById('blog-page-info');
+            if (!mainGrid || !moreGrid || typeof blogPosts === 'undefined') return;
+
+            const PER_PAGE = 7; // 3 large + 4 small
+            const totalPages = Math.ceil(blogPosts.length / PER_PAGE);
+            let currentPage = 1;
+
+            function renderBlogPage(page) {
+                currentPage = page;
+                const start = (page - 1) * PER_PAGE;
+                const pagePosts = blogPosts.slice(start, start + PER_PAGE);
+
+                // First 3 — large cards
+                const mainPosts = pagePosts.slice(0, 3);
+                mainGrid.innerHTML = mainPosts.map(post => `
+                    <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
+                        <div class="overflow-hidden">
+                            <img src="blog/img/${post.image}" alt="${post.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-8">
+                            <p class="text-xs text-[#c4a660] font-semibold uppercase mb-2">${post.date}</p>
+                            <h3 class="font-serif text-[1.35rem] leading-tight font-bold text-[#1d1d1d] mb-3">${post.title}</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">${post.excerpt}</p>
+                        </div>
+                    </a>
+                `).join('');
+
+                // Remaining — small cards
+                const morePosts = pagePosts.slice(3);
+                if (morePosts.length > 0) {
+                    moreGrid.style.display = '';
+                    moreGrid.innerHTML = morePosts.map(post => `
+                        <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
+                            <div class="overflow-hidden">
+                                <img src="blog/img/${post.image}" alt="${post.title}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5">
+                                <p class="text-xs text-[#c4a660] font-semibold mb-1">${post.date}</p>
+                                <h3 class="font-serif text-base font-bold text-[#1d1d1d] leading-snug">${post.title}</h3>
+                            </div>
+                        </a>
+                    `).join('');
+                } else {
+                    moreGrid.style.display = 'none';
+                }
+
+                // Update button states
+                prevBtn.style.opacity = page <= 1 ? '0.4' : '1';
+                prevBtn.style.pointerEvents = page <= 1 ? 'none' : 'auto';
+                nextBtn.style.opacity = page >= totalPages ? '0.4' : '1';
+                nextBtn.style.pointerEvents = page >= totalPages ? 'none' : 'auto';
+
+                // Page indicator (only show if more than 1 page)
+                if (totalPages > 1) {
+                    pageInfo.textContent = page + ' / ' + totalPages;
+                } else {
+                    pageInfo.textContent = '';
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) renderBlogPage(currentPage - 1);
+            });
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) renderBlogPage(currentPage + 1);
+            });
+
+            renderBlogPage(1);
+        })();
+    </script>
+
+    <!-- Lucide Icons Init + Animations -->
+    <script>
+        lucide.createIcons();
+
+        // Custom smooth scroll – works regardless of browser/OS animation settings
+        function smoothScrollTo(targetY, duration) {
+            duration = duration || 800;
+            const startY = window.scrollY;
+            const diff = targetY - startY;
+            if (Math.abs(diff) < 2) return;
+            let startTime = null;
+
+            function easeInOutCubic(t) {
+                return t < 0.5
+                    ? 4 * t * t * t
+                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = easeInOutCubic(progress);
+                window.scrollTo(0, startY + diff * eased);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        // Scroll to a section by ID
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+                const offset = 80;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                smoothScrollTo(top, 800);
+            }
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            const isOpen = mobileMenu.classList.toggle('open');
+            mobileMenu.style.display = isOpen ? '' : 'none';
+            positionMobileMenu();
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link-mobile').forEach(link => {
+            link.addEventListener('click', (e) => {
+                menuBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                mobileMenu.style.display = 'none';
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                        smoothScrollTo(top, 800);
+                    }
+                }
+            });
+        });
+
+        // Fade-in sections on scroll using IntersectionObserver
+        const fadeSections = document.querySelectorAll('.fade-section');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
+        fadeSections.forEach(section => sectionObserver.observe(section));
+
+        // Active nav link tracking on scroll
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveNav() {
+            const scrollY = window.scrollY + 120;
+            let currentId = '';
+
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop) {
+                    currentId = section.id;
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'border-b-2', 'border-black');
+                const href = link.getAttribute('href');
+                if (currentId && href === '#' + currentId) {
+                    link.classList.add('active', 'border-b-2', 'border-black');
+                } else if (!currentId && href === '#') {
+                    link.classList.add('active', 'border-b-2', 'border-black');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+        // Shrink navbar on scroll
+        const navbarWrap = document.getElementById('navbar-wrap');
+        const navbarSpacer = document.getElementById('navbar-spacer');
+
+        function setNavbarSpacer() {
+            navbarSpacer.style.height = navbarWrap.offsetHeight + 'px';
+        }
+        setNavbarSpacer();
+        window.addEventListener('resize', setNavbarSpacer);
+
+        // position mobile menu below navbar
+        const mobileMenuEl = document.getElementById('mobile-menu');
+        function positionMobileMenu() {
+            mobileMenuEl.style.top = navbarWrap.offsetHeight + 'px';
+        }
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 40) {
+                navbarWrap.classList.add('scrolled');
+            } else {
+                navbarWrap.classList.remove('scrolled');
+            }
+            // update spacer after class toggle (logo hides)
+            requestAnimationFrame(setNavbarSpacer);
+        }, { passive: true });
+
+        // Smooth scroll with offset for fixed nav
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#') && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                        smoothScrollTo(top, 800);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

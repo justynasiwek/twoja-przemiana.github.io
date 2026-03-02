@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decyzje decyzje – Twoja Przemiana</title>
+    <meta name="description" content="Podejmowanie decyzji życiowych bywa trudne. Jak do tego podejść, aby w przyszłości niczego nie żałować?">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Twoja Przemiana - Justyna Siwek" class="h-14 md:h-20 w-auto">
+            </a>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="hover:text-black pb-1 transition-all">Strona główna</a>
+            <a href="../index.html#o-mnie" class="hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="../index.html#rozwoj" class="hover:text-black pb-1 transition-all">Rozwój</a>
+            <a href="../index.html#diagnoza" class="hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="../index.html#blog" class="border-b-2 border-black pb-1 transition-all">Blog</a>
+            <a href="../index.html#kontakt" class="hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <button id="mobile-menu-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease-out,opacity .3s ease-out;">
+        <div class="py-4 space-y-3 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="block py-2 hover:text-black">Strona główna</a>
+            <a href="../index.html#o-mnie" class="block py-2 hover:text-black">O mnie</a>
+            <a href="../index.html#rozwoj" class="block py-2 hover:text-black">Rozwój</a>
+            <a href="../index.html#diagnoza" class="block py-2 hover:text-black">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="block py-2 hover:text-black">Umów termin</a>
+            <a href="../index.html#blog" class="block py-2 text-black font-bold">Blog</a>
+            <a href="../index.html#kontakt" class="block py-2 hover:text-black">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Article -->
+    <article class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+            <span>/</span>
+            <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+            <span>/</span>
+            <span class="text-gray-800">Decyzje</span>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden mb-8">
+            <img src="img/decyzje.jpg" alt="Decyzje decyzje" class="w-full h-64 md:h-96 object-cover">
+        </div>
+
+        <div class="mb-6">
+            <p class="text-sm text-[#c4a660] font-semibold uppercase mb-3">9 lutego 2025 · Justyna Siwek</p>
+            <h1 class="font-serif text-2xl md:text-4xl font-bold text-[#1d1d1d] leading-tight">
+                Decyzje decyzje
+            </h1>
+        </div>
+
+        <div class="max-w-[800px] prose prose-lg text-gray-700 leading-relaxed space-y-5">
+            <p>🤔 Podejmowanie decyzji życiowych bywa dość trudne, nawet jeśli tylko sami przed sobą odpowiadamy za ich rezultaty. A często nasze decyzje mają też wpływ na naszych bliskich. Chcielibyśmy dokonywać wyborów jak najlepiej, aby w przyszłości niczego nie żałować. Jak do tego podejść?</p>
+
+            <p>✔️ Dobrze jest spisać sobie za i przeciw, korzyści i straty dla różnych wariantów rozwiązań. Zawsze mamy przynajmniej dwa: zmiana i brak zmiany. A czasami mogą to być jeszcze inne możliwości. Porównajmy je, wówczas zobaczymy, do czego się bardziej skłaniamy, czy wolimy mieć wróbla w garści, czy motywuje nas bardziej kanarek na dachu.</p>
+
+            <p>✔️ Myślimy na tu i teraz, ale nasza decyzja może mieć konsekwencje za jakiś czas. Dlatego warto się zastanowić nad tym co będzie za pół roku, ale także co byśmy chcieli aby było np. za 3 lata. Pomyślmy, dokąd obecna decyzja nas zaprowadzi.</p>
+
+            <p>✔️ Rozważmy, jakie konsekwencje ma podejmowana decyzja dla naszego otoczenia, dla naszych relacji z bliskimi oraz dla nas samych.</p>
+
+            <p>✔️ Istotne pytanie dotyczy też tego, czy nasza decyzja otwierająca nam jakieś drzwi nie zamyka przypadkiem innych. Co zyskujemy przyjmując np. ofertę pracy, ale też co możemy bezpowrotnie stracić.</p>
+
+            <p>✔️ Warto zastanowić się co wiemy na pewno, a co jest tylko naszym przypuszczeniem. Jeśli musimy opierać się na pewnych założeniach warto określić sobie ich prawdopodobieństwo, żeby nie rozpędzić się w snuciu planów do najmniej prawdopodobnych wariantów.</p>
+
+            <p>✔️ I koniecznie zastanówmy się, co pomyślimy o sobie teraz, a co za kilka lat, w każdym z rozważanych wariantów.</p>
+
+            <p>Czas pokaże, czy podjęta decyzja była najlepsza, ale nie mając daru jasnowidzenia podobno lepiej żałować tego, co się zrobiło, niż tego, czego się nie zrobiło.</p>
+
+            <p>Trzymam kciuki za Wasze życiowe wybory 🤞</p>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <a href="../index.html#blog" class="inline-flex items-center gap-2 text-[#c4a660] hover:text-[#b09455] font-medium transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Wróć do bloga
+            </a>
+        </div>
+    </article>
+
+    <footer class="bg-[#0F172A] py-6 px-6 mt-12">
+        <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>Twoja Przemiana &copy; Justyna Siwek 2025</p>
+            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
+                <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+                <a href="../index.html#o-mnie" class="hover:text-[#c4a660] transition-colors">O mnie</a>
+                <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+                <a href="../index.html#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            if (mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = '400px';
+                mobileMenu.style.opacity = '1';
+            } else {
+                mobileMenu.style.maxHeight = '0px';
+                mobileMenu.style.opacity = '0';
+            }
+        });
+    </script>
+</body>
+</html>

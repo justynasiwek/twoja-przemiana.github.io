@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiedy praca staje się obsesją… – Twoja Przemiana</title>
+    <meta name="description" content="Jeśli dużo pracujemy – po czym poznać, czy już wpadliśmy w pułapkę pracoholizmu?">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Twoja Przemiana - Justyna Siwek" class="h-14 md:h-20 w-auto">
+            </a>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="hover:text-black pb-1 transition-all">Strona główna</a>
+            <a href="../index.html#o-mnie" class="hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="../index.html#rozwoj" class="hover:text-black pb-1 transition-all">Rozwój</a>
+            <a href="../index.html#diagnoza" class="hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="../index.html#blog" class="border-b-2 border-black pb-1 transition-all">Blog</a>
+            <a href="../index.html#kontakt" class="hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <button id="mobile-menu-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease-out,opacity .3s ease-out;">
+        <div class="py-4 space-y-3 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="block py-2 hover:text-black">Strona główna</a>
+            <a href="../index.html#o-mnie" class="block py-2 hover:text-black">O mnie</a>
+            <a href="../index.html#rozwoj" class="block py-2 hover:text-black">Rozwój</a>
+            <a href="../index.html#diagnoza" class="block py-2 hover:text-black">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="block py-2 hover:text-black">Umów termin</a>
+            <a href="../index.html#blog" class="block py-2 text-black font-bold">Blog</a>
+            <a href="../index.html#kontakt" class="block py-2 hover:text-black">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Article -->
+    <article class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+            <span>/</span>
+            <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+            <span>/</span>
+            <span class="text-gray-800">Pracoholizm</span>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden mb-8">
+            <img src="img/pracoholizm.jpg" alt="Kiedy praca staje się obsesją…" class="w-full h-64 md:h-96 object-cover">
+        </div>
+
+        <div class="mb-6">
+            <p class="text-sm text-[#c4a660] font-semibold uppercase mb-3">14 kwietnia 2025 · Justyna Siwek</p>
+            <h1 class="font-serif text-2xl md:text-4xl font-bold text-[#1d1d1d] leading-tight">
+                Kiedy praca staje się obsesją…
+            </h1>
+        </div>
+
+        <div class="max-w-[800px] prose prose-lg text-gray-700 leading-relaxed space-y-5">
+            <p>Jeśli kobieta kupuje sporo butów nie musi być zakupoholiczką, jeśli lubimy sobie pograć na komputerze nie oznacza to uzależnienia od gier. W języku potocznym często nazywamy „uzależnieniem" coś, co jest nawykiem, przyzwyczajeniem. Ale jeśli dużo pracujemy – po czym poznać, czy już wpadliśmy w pułapkę pracoholizmu.</p>
+
+            <p>Warto więc od czasu do czasu zadać sobie kontrolnie pytania.</p>
+
+            <p>Jeśli odpowiedzi na te pytania są niepokojące, trzeba się zastanowić, czy nie zapędziliśmy się z pracą za daleko. Jest kilka kwestii, które pomogą to ustalić.</p>
+
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-[#1d1d1d] mt-8 mb-3">Kontrola – kto kontroluje sytuację, Ty, czy Twoja praca?</h2>
+
+            <p>To, co powinno być niepokojące to kontrola, a raczej jej utrata. Dopóki kontrolujemy czas, zaangażowanie w daną czynność, dopóty możemy być spokojni. Jeśli jednak zaczynamy przeznaczać na pewne aktywności więcej czasu, niż byśmy chcieli, niż planowaliśmy, to już jest niepokojące. Szczególnie, jeśli praca zaczyna nam zabierać coraz więcej czasu i uwagi, trudno jest nam przestać to robić, a nawet kiedy przestajemy nadal o tym myślimy.</p>
+
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-[#1d1d1d] mt-8 mb-3">Czas – co tracimy przeznaczając więcej czasu na pracę?</h2>
+
+            <p>Czas nie jest z gumy. Jeśli więcej pracujemy, to mamy mniej czasu dla rodziny, przyjaciół i na inne przyjemności. Paradoksalnie często nie odczuwamy tego braku, bo nasz mózg odcina nas od myślenia o nich, skupiając całą naszą uwagę na jednej uzależniającej aktywności tak, jakby nie było innych źródeł przyjemności. Dopiero kiedy porównamy nasz dzień, tydzień do tego jak było kiedyś możemy mieć refleksję, że zmiany poszły w dziwnym kierunku.</p>
+
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-[#1d1d1d] mt-8 mb-3">Satysfakcja – czy jeśli więcej pracuję jestem bardziej zadowolony z efektów?</h2>
+
+            <p>Charakterystyczne dla uzależnień behawioralnych, czyli dotyczących zachowań, jest też odczuwanie coraz mniejszej przyjemności. Praca wcale nie przynosi pracoholikowi ogromnej radości, musi pracować więcej niż kiedyś, aby nie czuć się źle. Pracoholik często wręcz narzeka na swoją pracę, wcale nie jest ona jego pasją.</p>
+
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-[#1d1d1d] mt-8 mb-3">Konsekwencje – jak zaangażowanie w pracę wpływa na inne obszary naszego życia?</h2>
+
+            <p>Ważne są konsekwencje, jakie nasze ryzykowne zachowania za sobą niosą. Mogą to być konflikty rodzinne, w które można wpaść, jeśli ktoś bliski zwróci uwagę typu „chyba za dużo pracujesz", bo uzależnieni niestety nie dostrzegają tego, a nawet angażują się dość mocno w ukrywanie lub bagatelizowanie sytuacji: „wszyscy teraz dużo muszą pracować". Takie błędy w postrzeganiu rzeczywistości dopadają każdego z nas, możemy coś wyolbrzymiać, lub pomniejszać, możemy dostrzegać nasz wpływ nawet tam gdzie go nie ma. Przy uzależnieniach te błędy niestety prowadzą nas na manowce.</p>
+
+            <p>Pracoholizm przynosi wiele negatywnych konsekwencji zdrowotnych, społecznych, ale w dłuższej perspektywie. Dlatego często trudno szybciej zorientować się, w czym tkwimy. W przypadku innych ryzykownych zachowań, mogą pojawiać się np. problemy finansowe, jeśli nasze granie kosztuje, albo co gorsza wkręciliśmy się w e-hazard, czy kryptohazard, albo kiedy nakupiliśmy wielu niepotrzebnych rzeczy, na które nas zwyczajnie nie stać. Te konsekwencje bywają trzeźwiące, ale ludzie są różni, więc dla różnych osób jest inna granica. Jedni zatrzymają się tracąc oszczędności, inni dopiero ockną się przy problemach ze spłatą długów, a jeszcze innych powstrzymać może jedynie rodzina wyeksmitowana ze sprzedawanego za długi domu. Konsekwencje mogą być więc poważne, ale problemem jest też, kiedy ich nie ma, albo nie są one tak dotkliwe. Skutki przepracowania nie są przyjemne, ale można dość długo je bagatelizować, rezultaty przewlekłego stresu, wypalenie zawodowe, problemy zdrowotne pojawiają się z czasem.</p>
+
+            <h2 class="font-serif text-xl md:text-2xl font-bold text-[#1d1d1d] mt-8 mb-3">Czy od pracoholizmu można się uwolnić?</h2>
+
+            <p>Tak dla porządku – w oficjalnych klasyfikacjach nie ma pracoholizmu, podobnie jak wielu innych kłopotliwych uzależnień behawioralnych, czyli związanych z zachowaniami, np. brakuje zakupoholizmu, nie ma też wielu najnowszych e-uzależnień – e-zakupoholizmu, kryptohazardu, uzależnienia od ekranów i mediów społecznościowych oraz związanych z nimi zjawisk jak FOMO (z ang. fear of missing out), czyli lęku przed ominięciem czegoś i nomofobii, czyli lęku przed utratą dostępu do telefonu. Te problemy jednak istnieją i dla osób, które się z nimi mierzą są całkiem realne. Na szczęście metody wspierania osób, które chcą się z nimi uporać istnieją, na bazie programów leczenia hazardu problemowego i uzależnienia od gier komputerowych można ułożyć plan terapii uwzględniający potrzeby konkretnej osoby, także biorąc pod uwagę specyfikę danego problemu.</p>
+
+            <p>Terapia pracoholizmu opiera się na zmianie naszego stosunku do pracy i powrotu do kontrolowania tej czynności. Bo tak jak w przypadku zakupoholizmu trudno rekomendować abstynencję od zakupów, przy cyber-problemach trudno odciąć się całkowicie od komputera i smartfonu, to w przypadku pracoholizmu nie można przestać całkowicie pracować. Trzeba jednak odzyskać kontrolę nad tymi zachowaniami, umieć je skutecznie ograniczyć, zastąpić innymi, pożytecznymi i, co najważniejsze, zmierzyć się z problemami i głęboko tkwiącymi przekonaniami, które je wywołały. Bo wszelkie „holizmy" to tylko objawy.</p>
+
+            <p>Podejrzewasz u siebie (lub bliskiej osoby) pracoholizm? Ustal z czego wynika taki pęd do pracy zadając kilka pytań.</p>
+
+            <p>To pomoże ustalić, czy zaangażowanie w pracę nie wynika z czegoś zupełnie innego, niż potrzeba zarabiania i realizacji naszych planów dot. własnej kariery.</p>
+
+            <p>Pracoholizm, chociaż wydaje się z pozoru prosty w diagnozie ma często bardzo złożone przyczyny, tkwiące głęboko w naszych przekonaniach o sobie, innych ludziach i o świecie. Może być wynikiem naszych doświadczeń z dzieciństwa, może stać się też sposobem na zaspokojenie potrzeby uznania, akceptacji. Często łączy się z perfekcjonizmem, niskim lub niepewnym poczuciem własnej wartości, syndromem oszusta, a także niezdolnością do odpoczynku, którego trzeba się nauczyć.</p>
+
+            <p>I jeszcze jedno, pracoholizm nie musi dotyczyć tylko pracy zarobkowej. Nasze pracoholiczne zachowania mogą też objawiać się w pracach domowych. Warto również to mieć na uwadze, jeśli dopadnie nas zmęczenie z przepracowania wywołanego przygotowywaniami do świąt.</p>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <a href="../index.html#blog" class="inline-flex items-center gap-2 text-[#c4a660] hover:text-[#b09455] font-medium transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Wróć do bloga
+            </a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F172A] py-6 px-6 mt-12">
+        <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>Twoja Przemiana &copy; Justyna Siwek 2025</p>
+            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
+                <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+                <a href="../index.html#o-mnie" class="hover:text-[#c4a660] transition-colors">O mnie</a>
+                <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+                <a href="../index.html#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            if (mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = '400px';
+                mobileMenu.style.opacity = '1';
+            } else {
+                mobileMenu.style.maxHeight = '0px';
+                mobileMenu.style.opacity = '0';
+            }
+        });
+    </script>
+</body>
+</html>

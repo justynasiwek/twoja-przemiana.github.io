@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wypalenie zawodowe, czy powakacyjne rozleniwienie? – Twoja Przemiana</title>
+    <meta name="description" content="Wracasz po urlopie do pracy i czujesz, że masz dość? Czy to już wypalenie zawodowe, czy tylko przejściowy kryzys?">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="../index.html">
+                <img src="../img/logo.png" alt="Twoja Przemiana - Justyna Siwek" class="h-14 md:h-20 w-auto">
+            </a>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="hover:text-black pb-1 transition-all">Strona główna</a>
+            <a href="../index.html#o-mnie" class="hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="../index.html#rozwoj" class="hover:text-black pb-1 transition-all">Rozwój</a>
+            <a href="../index.html#diagnoza" class="hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="../index.html#blog" class="border-b-2 border-black pb-1 transition-all">Blog</a>
+            <a href="../index.html#kontakt" class="hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40" style="max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease-out,opacity .3s ease-out;">
+        <div class="py-4 space-y-3 text-sm font-medium text-gray-800">
+            <a href="../index.html" class="block py-2 hover:text-black">Strona główna</a>
+            <a href="../index.html#o-mnie" class="block py-2 hover:text-black">O mnie</a>
+            <a href="../index.html#rozwoj" class="block py-2 hover:text-black">Rozwój</a>
+            <a href="../index.html#diagnoza" class="block py-2 hover:text-black">Diagnoza i terapia</a>
+            <a href="../index.html#zapisy" class="block py-2 hover:text-black">Umów termin</a>
+            <a href="../index.html#blog" class="block py-2 text-black font-bold">Blog</a>
+            <a href="../index.html#kontakt" class="block py-2 hover:text-black">Kontakt</a>
+        </div>
+    </div>
+
+    <!-- Article -->
+    <article class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+            <span>/</span>
+            <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+            <span>/</span>
+            <span class="text-gray-800">Wypalenie zawodowe</span>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="rounded-2xl overflow-hidden mb-8">
+            <img src="img/wypalenie.jpg" alt="Wypalenie zawodowe, czy powakacyjne rozleniwienie?" class="w-full h-64 md:h-96 object-cover">
+        </div>
+
+        <!-- Meta -->
+        <div class="mb-6">
+            <p class="text-sm text-[#c4a660] font-semibold uppercase mb-3">1 września 2025 · Justyna Siwek</p>
+            <h1 class="font-serif text-2xl md:text-4xl font-bold text-[#1d1d1d] leading-tight">
+                Wypalenie zawodowe, czy powakacyjne rozleniwienie?
+            </h1>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-[800px] prose prose-lg text-gray-700 leading-relaxed space-y-5">
+            <p>Wracasz po urlopie do pracy i czujesz, że masz dość? Czy to już wypalenie zawodowe, czy tylko przejściowy kryzys lub zwykłe powakacyjne rozleniwienie?</p>
+
+            <p>Po dłuższym urlopie mamy prawo czuć się rozleniwieni, a zbyt szybkie rzucanie się w wir pracy może nam wręcz zaszkodzić. Jeśli nasz organizm przyzwyczaił się do innego funkcjonowania, rozkładu dnia, to nie możemy oczekiwać, że nagle wskoczy znowu na wysokie obroty. Przyzwyczajajmy się więc do pracy stopniowo i nie próbujmy intensywnie nadrabiać zaległości. A jeśli nie mamy w ogóle ochoty na pracę?</p>
+
+            <p>Kiedy po wakacjach nie czujemy się zresetowani i odrzuca nas wręcz na myśl o powrocie do zawodowych obowiązków warto się temu przyjrzeć. Wypalenie zawodowe nie pojawia się nagle. Pierwszymi objawami może być właśnie brak oczekiwanego naładowania baterii po urlopie. Nawet po dużym wysiłku nasza psychika powinna się zregenerować w swoim tempie, jeśli to nie następuje nie ignorujmy tego.</p>
+
+            <p>Innym ważnym sygnałem jest rosnący dystans emocjonalny do pracy, zanik empatii, dominacja negatywnych przekonań. To nie jest już zwykły brak satysfakcji. Robimy się zgorzkniali, cynicznie mówimy o zadaniach, z sarkazmem wypowiadamy się o klientach, a to rodzi konflikty i napięcia, w efekcie jeszcze bardziej przyczynia się do problemów z pracą…</p>
+
+            <p>Trzeci i już wręcz krytyczny objaw syndromu wypalenia to uczucie braku kompetencji i sprawczości. Osoba cierpiąca na wypalenie zawodowe będzie bagatelizować sukcesy, uważając, że to przypadek lub zasługa innych osób, natomiast będzie koncentrować się mocno na wszystkich sprawach, które się nie powiodły. To tak trochę jak w depresji, kiedy za sukcesy odpowiadają czynniki zewnętrzne, a za porażki – wewnętrzne. Bo niestety od tej fazy wypalenia zawodowego już blisko do rozlania się negatywnego stylu myślenia również na inne sfery. A do tego poczucie niekompetencji utrudnia walkę z wypaleniem, kiedy konieczna jest zmiana pracy, czy nawet zawodu. Bo jak tu znaleźć nową rolę, kiedy jestem do niczego i nic nie umiem.</p>
+
+            <p>Wypalenie zawodowe nie jest ciągle uważane oficjalnie za chorobę, jednak w najnowszej klasyfikacji ICD 11 zostało ujęte jako „syndrom zawodowy", który może mieć poważne konsekwencje dla zdrowia psychicznego i fizycznego. Mimo to od dawna wypracowywane są metody terapii tego syndromu, bo w praktyce jest to istotny problem psychologiczny. Trudno bowiem bagatelizować cierpienie, które wiąże się co prawda tylko z jedną, ale jakże ważną sferą naszego życia. A do tego może powodować wiele innych problemów, m.in: obniżony nastrój, bezsenność, dolegliwości bólowe, drażliwość, konfliktowość.</p>
+
+            <p>Odpoczywając ładujmy więc baterie, a jeśli mamy poczucie, że po urlopie nie wracamy do stanu równowagi przyjrzyjmy się temu, co myślimy o naszej pracy i co czujemy myśląc o niej.</p>
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <a href="../index.html#blog" class="inline-flex items-center gap-2 text-[#c4a660] hover:text-[#b09455] font-medium transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Wróć do bloga
+            </a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F172A] py-6 px-6 mt-12">
+        <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>Twoja Przemiana &copy; Justyna Siwek 2025</p>
+            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
+                <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+                <a href="../index.html#o-mnie" class="hover:text-[#c4a660] transition-colors">O mnie</a>
+                <a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
+                <a href="../index.html#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            if (mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight) {
+                mobileMenu.style.maxHeight = '400px';
+                mobileMenu.style.opacity = '1';
+            } else {
+                mobileMenu.style.maxHeight = '0px';
+                mobileMenu.style.opacity = '0';
+            }
+        });
+    </script>
+</body>
+</html>
