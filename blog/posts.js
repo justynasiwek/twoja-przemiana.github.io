@@ -6,6 +6,20 @@
 //
 const blogPosts = [
     {
+        slug: "wiosna",
+        title: "Wiosna",
+        date: "11 marca 2026",
+        image: "wiosna.jpg",
+        excerpt: "Wiosna przychodzi do każdego, ale nie każdy ją czuje…"
+    },
+    {
+        slug: "szefowie",
+        title: "Drodzy Szefowie,",
+        date: "10 marca 2026",
+        image: "szefowie.jpg",
+        excerpt: "z okazji Waszego święta, proponuję chwilę na refleksję pod hasłem „Jakim jestem szefem?"
+    },
+    {
         slug: "wypalenie-zawodowe",
         title: "Wypalenie zawodowe, czy powakacyjne rozleniwienie?",
         date: "1 września 2025",
