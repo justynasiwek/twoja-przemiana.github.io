@@ -1,0 +1,298 @@
+Created 7 todos
+
+I'll scan key files to understand current structure before changes.
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/index.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/posts.js)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/decyzje.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/pewnosc-siebie.html)
+
+I’ll quickly open the remaining blog pages to capture titles/dates for SEO.
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/menedzerowie-nie-doceniaja.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/pracoholizm.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/szczescie.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/szefowie.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/wiosenne-porzadki.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/wiosna.html)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/blog/wypalenie-zawodowe.html)
+
+Next, I’ll add canonical, Open Graph/Twitter tags, JSON-LD, and generate robots.txt + sitemap.xml.
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+Created [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/robots.txt)
+
+Created [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/sitemap.xml)
+
+Read [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/README.md)
+
+
+
+
+```
+
+```
+
+
+Completed: *Audit HTML and blog files* (1/7)
+
+Jasne — zadbam o SEO całościowo. Plan: audyt plików, dodanie meta/OG/canonical + schema.org, mapa strony i robots, a na koniec skrót „gdzie i jak wstawiać słowa kluczowe”.
+
+**Co poprawiłem**
+- index.html
+  - Canonical, favicon, theme-color.
+  - Open Graph/Twitter: tytuł/opis/obraz/URL.
+  - JSON-LD: `Organization` (dane gabinetu) i `WebSite` (język, nazwa).
+- Strony wpisów bloga
+  - Dodane canonical, OG/Twitter, `article:published_time`, breadcrumbs (JSON-LD `BreadcrumbList`) i `BlogPosting` z danymi autora, wydawcy, obrazem i datami:
+  - Zmiany w: decyzje.html, pewnosc-siebie.html, menedzerowie-nie-doceniaja.html, pracoholizm.html, szczescie.html, szefowie.html, wiosenne-porzadki.html, wiosna.html, wypalenie-zawodowe.html.
+  - Ujednoliciłem i poprawiłem opisy meta tam, gdzie były nieadekwatne (np. „Szefowie”, „Wiosna”).
+- Indeksacja
+  - Dodałem robots.txt (Allow: /) i sitemap.xml z absolutnymi URL-ami i `lastmod`.
+- Dokumentacja
+  - Dodałem przewodnik „SEO wskazówki” w README.md z krótką checklistą tworzenia wpisów, miejscami na słowa kluczowe i utrzymaniem sitemapy.
+
+**Gdzie i jak wstawiać słowa kluczowe (skrót)**
+- Title: 50–60 znaków; najważniejsze frazy na początku.
+- Meta description: 140–160 znaków; naturalnie wplecione 1–2 kluczowe frazy.
+- Nagłówki H1/H2: opisowe, tematyczne; bez upychania słów.
+- Pierwszy akapit: jasno sygnalizuje temat (często brany do snippetów).
+- Obrazy: opisowe `alt` z kontekstem wpisu.
+- Linki wewnętrzne: anchor tekst opisujący temat strony docelowej.
+- Slugi URL: krótkie, po polsku, z myślnikami, zgodne z treścią.
+- Struktura danych: uzupełniaj `datePublished`/`dateModified` (YYYY-MM-DD), `headline`, `image`, `description` w JSON-LD.
+
+**Uwaga dot. domeny**
+- Ustawiłem canonical i mapę na domenę GitHub Pages: https://twoja-przemiana.github.io/. Jeśli będziesz używać własnej domeny (np. twoja-przemiana.pl), mogę zaktualizować canonicale, JSON-LD i sitemapę jednym ruchem.
+
+**Rekomendowane kolejne kroki**
+- Dodać witrynę do Google Search Console i przesłać sitemap.xml.
+- Ustalić preferowaną domenę (z/bez www) i ewentualnie włączyć HTTPS + redirecty na docelowej domenie.
+- Rozważyć wewnętrzne linki z sekcji usług do pokrewnych wpisów (np. „wypalenie zawodowe”, „pewność siebie”) dla lepszego „topic clustering”.
+
+Chcesz, żebym podmienił canonicale/sitemapę pod własną domenę (jeśli już ją masz), lub od razu przygotował plik CNAME i instrukcje dla GitHub Pages?
+
+Made changes.
+
+Created 4 todos
+
+Switching all SEO URLs to the new domain and adding CNAME.
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+
+
+
+```
+
+```
+
+
+Created [](file:///d%3A/CloudEE/jo/twoja-przemiana.github.io/CNAME)
+
+
+
+
+```
+
+```
+
+
+Completed: *Update canonical/OG to custom domain* (1/4)
+
+Super — podpinam SEO pod www.twoja-przemiana.pl. Plan: podmiana canonical/OG/JSON‑LD we wszystkich stronach, aktualizacja robots/sitemap i dodanie CNAME dla GitHub Pages.
+
+**Co zmieniłem teraz**
+- Domeny w SEO:
+  - Zaktualizowałem canonical, `og:url`, `og:image`, `twitter:image` i JSON‑LD w index.html oraz wszystkich wpisach bloga (linki, obrazy, breadcrumbs) na https://www.twoja-przemiana.pl/.
+- Indeksacja:
+  - Zmienione: robots.txt → Sitemap na domenę, sitemap.xml → wszystkie `loc` na nową domenę.
+- GitHub Pages:
+  - Dodałem CNAME z wartością: `www.twoja-przemiana.pl`.
+- Dokument:
+  - W README.md dopisałem krótkie kroki DNS/HTTPS i co zaktualizować przy zmianie domeny.
+
+**Co jeszcze warto zrobić (poza repo)**
+- W DNS dodaj rekord CNAME: `www` → `twoja-przemiana.github.io`.
+- W ustawieniach GitHub Pages ustaw custom domain `www.twoja-przemiana.pl` i włącz „Enforce HTTPS”.
+- W Google Search Console dodaj nową usługę dla domeny i zgłoś sitemap.xml.
+
+Chcesz, żebym dodatkowo zamienił odnośniki w breadcrumbach „Blog” na `/#blog` także w treści linków (nie tylko w JSON‑LD), czy zostawiam istniejące odwołania do `index.html#blog`?
+
+Made changes.
