@@ -15,7 +15,7 @@ const blogPosts = [
     {
         slug: "szefowie",
         title: "Drodzy Szefowie,",
-        date: "10 marca 2026",
+        date: "16 października 2025",
         image: "szefowie.jpg",
         excerpt: "z okazji Waszego święta, proponuję chwilę na refleksję pod hasłem „Jakim jestem szefem?"
     },
