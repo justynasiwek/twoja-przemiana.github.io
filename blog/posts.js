@@ -1,4 +1,4 @@
-// Dane postów na blogu
+// Dane postów na blogu twoja-przemiana.pl
 // Aby dodać nowy post:
 //   1. Dodaj nowy wpis na POCZĄTEK tej tablicy (najnowszy pierwszy)
 //   2. Utwórz nowy plik HTML w folderze blog/ (skopiuj istniejący post jako szablon)
@@ -15,7 +15,7 @@ const blogPosts = [
     {
         slug: "szefowie",
         title: "Drodzy Szefowie,",
-        date: "10 marca 2026",
+        date: "16 października 2025",
         image: "szefowie.jpg",
         excerpt: "z okazji Waszego święta, proponuję chwilę na refleksję pod hasłem „Jakim jestem szefem?"
     },
