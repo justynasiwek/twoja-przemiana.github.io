@@ -1,4 +1,4 @@
-// Dane postów na blogu
+// Dane postów na blogu twoja-przemiana.pl
 // Aby dodać nowy post:
 //   1. Dodaj nowy wpis na POCZĄTEK tej tablicy (najnowszy pierwszy)
 //   2. Utwórz nowy plik HTML w folderze blog/ (skopiuj istniejący post jako szablon)
