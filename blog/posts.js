@@ -7,7 +7,7 @@
 const blogPosts = [
     {
         slug: "wiosna",
-        title: "Wiosna",
+        title: "Wiosna przychodzi do każdego, ale nie każdy ją czuje…",
         date: "11 marca 2026",
         image: "wiosna.jpg",
         excerpt: "Wiosna przychodzi do każdego, ale nie każdy ją czuje…"
