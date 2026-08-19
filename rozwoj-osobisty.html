@@ -27,17 +27,94 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], serif: ['Playfair Display','serif'] } } } }
-    </script>
+    <link rel="stylesheet" href="css/tailwind.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- JSON-LD: Service + Breadcrumbs + FAQ -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Service",
+            "@id": "https://www.twoja-przemiana.pl/rozwoj-osobisty.html#usluga",
+            "name": "Rozwój osobisty – life coaching i asertywna komunikacja",
+            "description": "Life coaching i trening asertywnej komunikacji w Warszawie i online: decyzje życiowe, stres, równowaga psychiczna, motywacja, pewność siebie i stawianie granic.",
+            "url": "https://www.twoja-przemiana.pl/rozwoj-osobisty.html",
+            "serviceType": "Rozwój osobisty",
+            "provider": {
+                "@id": "https://www.twoja-przemiana.pl/#gabinet"
+            },
+            "areaServed": [
+                "Warszawa",
+                "Polska (online)"
+            ],
+            "availableChannel": [
+                {
+                    "@type": "ServiceChannel",
+                    "name": "Wizyta stacjonarna, Warszawa"
+                },
+                {
+                    "@type": "ServiceChannel",
+                    "name": "Wizyta online"
+                }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Strona główna",
+                    "item": "https://www.twoja-przemiana.pl/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Rozwój osobisty",
+                    "item": "https://www.twoja-przemiana.pl/rozwoj-osobisty.html"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Czym jest life coaching i dla kogo jest przeznaczony?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Life coaching to forma wsparcia dla osób, które chcą świadomie pokierować swoim życiem: podjąć ważne decyzje, lepiej radzić sobie ze stresem, odzyskać motywację i równowagę psychiczną."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Coaching czy terapia – co wybrać?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Jeśli głównym problemem są nasilone lub długotrwałe objawy, takie jak obniżony nastrój, lęk czy bezsenność, właściwszym wyborem będzie konsultacja diagnostyczna i ewentualna terapia. Gdy masz wątpliwości, pomogę je rozstrzygnąć podczas pierwszego spotkania."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Jakie efekty mogę realnie osiągnąć?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Wszystko zależy od celów, jakie zostały określone i potrzeb Klienta. Rozwojowo można poprawić np. komunikację, wzmocnić pewność siebie, nauczyć się lepiej planować, czy zarządzać czasem."
+                    }
+                }
+            ]
+        }
+    ]
+}
+         
+    </script>
 </head>
 <body class="font-sans text-[#1d1d1d] bg-white min-h-screen">
     <header class="border-b border-gray-100">
         <div class="max-w-[1100px] mx-auto px-6 py-3 flex items-center justify-between">
             <a href="/" aria-label="Strona główna">
-                <img src="img/logo.png" alt="Twoja Przemiana - Justyna Siwek" class="h-12 w-auto">
+                <img src="img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="h-12 w-auto">
             </a>
             <nav class="hidden md:flex items-center gap-6 text-sm">
                 <a href="/" class="hover:text-[#c4a660]">Strona główna</a>
@@ -46,6 +123,12 @@
             </nav>
         </div>
     </header>
+    <nav aria-label="Okruszki" class="max-w-[1100px] mx-auto px-6 pt-4 text-sm text-gray-500">
+        <a href="/" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
+        <span class="mx-1">/</span>
+        <span class="text-gray-800">Rozwój osobisty</span>
+    </nav>
+
 
     <section class="relative w-full bg-[#5c6d62] text-white">
         <div class="max-w-[1100px] mx-auto px-6 py-12 md:py-16">
@@ -96,6 +179,38 @@
             </div>
         </div>
     </main>
+
+
+    <section class="py-10 md:py-14 px-4 md:px-6 bg-white border-t border-gray-100">
+        <div class="max-w-[1100px] mx-auto">
+            <h2 class="text-xl md:text-2xl font-serif font-bold text-[#1f2922] mb-6 tracking-wide">Najczęstsze pytania</h2>
+            <div class="space-y-4 max-w-[800px]">
+            <details class="bg-[#f1ebdb] rounded-xl p-5 group">
+                <summary class="font-serif font-bold text-[#1f2922] cursor-pointer list-none flex justify-between items-center">Czym jest life coaching i dla kogo jest przeznaczony?<span class="text-[#c4a660] ml-3 group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">Life coaching to forma wsparcia dla osób, które chcą świadomie pokierować swoim życiem: podjąć ważne decyzje, lepiej radzić sobie ze stresem, odzyskać motywację i równowagę psychiczną.</p>
+            </details>
+            <details class="bg-[#f1ebdb] rounded-xl p-5 group">
+                <summary class="font-serif font-bold text-[#1f2922] cursor-pointer list-none flex justify-between items-center">Coaching czy terapia – co wybrać?<span class="text-[#c4a660] ml-3 group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">Jeśli głównym problemem są nasilone lub długotrwałe objawy, takie jak obniżony nastrój, lęk czy bezsenność, właściwszym wyborem będzie konsultacja diagnostyczna i ewentualna terapia. Gdy masz wątpliwości, pomogę je rozstrzygnąć
+podczas pierwszego spotkania.</p>
+            </details>
+            <details class="bg-[#f1ebdb] rounded-xl p-5 group">
+                <summary class="font-serif font-bold text-[#1f2922] cursor-pointer list-none flex justify-between items-center">Jakie efekty mogę realnie osiągnąć?<span class="text-[#c4a660] ml-3 group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <p class="text-gray-700 mt-3 leading-relaxed">Wszystko zależy od celów, jakie zostały określone i potrzeb Klienta. Rozwojowo można poprawić np. komunikację, wzmocnić pewność siebie, nauczyć się lepiej planować, czy zarządzać czasem.</p>
+            </details>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-serif font-bold text-[#1f2922] mt-12 mb-4 tracking-wide">Przeczytaj na blogu</h2>
+            <ul class="space-y-2 max-w-[800px]">
+                <li><a href="blog/decyzje.html" class="text-[#3b4b40] underline decoration-[#c4a660] underline-offset-4 hover:text-[#c4a660] transition-colors">Decyzje, decyzje</a></li>
+                <li><a href="blog/pewnosc-siebie.html" class="text-[#3b4b40] underline decoration-[#c4a660] underline-offset-4 hover:text-[#c4a660] transition-colors">Na jakich filarach oprzeć pewność siebie?</a></li>
+                <li><a href="blog/szczescie.html" class="text-[#3b4b40] underline decoration-[#c4a660] underline-offset-4 hover:text-[#c4a660] transition-colors">Szczęście</a></li>
+            </ul>
+
+            <h2 class="text-xl md:text-2xl font-serif font-bold text-[#1f2922] mt-12 mb-4 tracking-wide">Zobacz także</h2>
+            <div><a href="rozwoj-zawodowy.html" class="inline-block border border-[#3b4b40] text-[#3b4b40] hover:bg-[#3b4b40] hover:text-white px-5 py-2 rounded-lg text-sm transition-colors mr-3 mb-3">Rozwój zawodowy</a> <a href="diagnoza-i-terapia.html" class="inline-block border border-[#3b4b40] text-[#3b4b40] hover:bg-[#3b4b40] hover:text-white px-5 py-2 rounded-lg text-sm transition-colors mr-3 mb-3">Diagnoza i terapia</a></div>
+        </div>
+    </section>
 
     <footer class="bg-[#0F172A] py-6 px-6">
         <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">

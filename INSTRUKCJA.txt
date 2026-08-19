@@ -1,0 +1,68 @@
+TWOJA-PRZEMIANA.PL - INSTRUKCJA PO ZMIANACH SEO/GEO
+====================================================
+
+1. DODAWANIE NOWEGO WPISU NA BLOG
+----------------------------------
+Napisz szkic w pliku tekstowym wedlug wzoru z katalogu blog/szkice/
+(naglowki: Tytul, Slug, Data, Obrazek, Zajawka, Opis, Kategoria,
+a potem tresc; puste linie oddzielaja akapity, "## " tworzy srodtytul,
+linie od "- " tworza liste). Obrazek w formacie WebP o szerokosci
+ok. 1200 px wrzuc do blog/img/. Nastepnie uruchom w glownym katalogu:
+
+    python3 nowy-wpis.py blog/szkice/nazwa-szkicu.txt
+
+Skrypt utworzy strone wpisu, doda go do listy na stronie glownej
+(blog/posts.js) i do sitemap.xml. Po publikacji zglos adres wpisu
+w Google Search Console (Sprawdzenie adresu URL -> Popros o zindeksowanie).
+
+2. PRZEBUDOWA ARKUSZA CSS
+--------------------------
+Strona nie korzysta juz z Tailwinda przez CDN, tylko ze statycznego
+pliku css/tailwind.css. Jezeli w HTML uzyjesz klas, ktorych dotad
+nie bylo na stronie, przebuduj arkusz poleceniem:
+
+    npx tailwindcss -i css/input.css -o css/tailwind.css --minify
+
+(wymaga jednorazowego: npm install). Zwykle wpisy tworzone automatem
+nie wymagaja przebudowy, bo szablon pokrywa potrzebne style.
+
+3. REJESTRACJE, KTORE TRZEBA WYKONAC RECZNIE (WYMAGAJA KONTA)
+--------------------------------------------------------------
+a) Google Search Console (search.google.com/search-console):
+   dodaj usluge "Domena: twoja-przemiana.pl", zweryfikuj wlasnosc
+   rekordem TXT w DNS u rejestratora domeny, przeslij sitemape
+   (https://www.twoja-przemiana.pl/sitemap.xml) i co kilka tygodni
+   przegladaj raport "Skutecznosc" (frazy i pozycje).
+b) Bing Webmaster Tools (bing.com/webmasters): mozna zaimportowac
+   ustawienia jednym kliknieciem z Search Console. Bing zasila
+   m.in. ChatGPT Search i Copilota, wiec to wazne dla GEO.
+c) Profil Firmy w Google (business.google.com): zaloz wizytowke
+   "Twoja Przemiana - Gabinet psychologiczny", kategoria Psycholog,
+   adres i telefon identyczne jak na stronie (Jozefa Hoene-Wronskiego
+   15/7, Warszawa, +48 883 956 256), dodaj link do strony i godziny
+   przyjec. Prosic zadowolonych klientow o opinie w Google.
+d) Analityka: GA4 lub lzejsze Plausible/Umami - wklej skrypt
+   sledzacy przed </head> w index.html i w szablonie blog/_szablon.html.
+
+4. PLIKI, KTORE DOSZLY LUB SIE ZMIENILY
+----------------------------------------
+- css/tailwind.css        statyczny arkusz stylow (zamiast CDN)
+- tailwind.config.js      konfiguracja do przebudowy arkusza
+- nowy-wpis.py            automat dodawania wpisow
+- blog/_szablon.html      szablon wpisu (placeholdery {{...}})
+- blog/szkice/            szkice tekstowe wpisow
+- llms.txt                opis witryny dla modeli jezykowych
+- img/*.webp, blog/img/*.webp  zoptymalizowane obrazy
+- opinie na stronie glownej sa teraz tekstem ze schematem Review
+
+5. WAZNE PRZED PUBLIKACJA
+--------------------------
+- Trzy nowe wpisy (jak-rozpoznac-wypalenie-zawodowe, psycholog-
+  psychoterapeuta-roznice, ile-trwa-terapia-cbt) wymagaja merytorycznej
+  akceptacji Justyny. Aby ktorys wycofac: usun jego plik HTML,
+  wpis w blog/posts.js i adres w sitemap.xml.
+- Obrazki tych wpisow to estetyczne placeholdery; warto podmienic
+  na fotografie (ta sama nazwa pliku w blog/img/).
+- Tekstowe opinie pochodza z publicznych profili ZnanyLekarz
+  i Psychologuj; upewnij sie, ze ich uzycie na stronie jest zgodne
+  z regulaminami tych portali i zgoda autorow.

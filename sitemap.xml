@@ -2,80 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.twoja-przemiana.pl/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/wiosna.html</loc>
-    <lastmod>2026-03-11</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/szefowie.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/wypalenie-zawodowe.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/pracoholizm.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/menedzerowie-nie-doceniaja.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/wiosenne-porzadki.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/szczescie.html</loc>
-    <lastmod>2025-03-12</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/decyzje.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/blog/pewnosc-siebie.html</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/rozwoj-osobisty.html</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/rozwoj-zawodowy.html</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.twoja-przemiana.pl/diagnoza-i-terapia.html</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/jak-rozpoznac-wypalenie-zawodowe.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/psycholog-psychoterapeuta-roznice.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/ile-trwa-terapia-cbt.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/odpoczynek.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
