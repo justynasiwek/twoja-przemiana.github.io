@@ -4,16 +4,22 @@ TWOJA-PRZEMIANA.PL - INSTRUKCJA PO ZMIANACH SEO/GEO
 1. DODAWANIE NOWEGO WPISU NA BLOG
 ----------------------------------
 Napisz szkic w pliku tekstowym wedlug wzoru z katalogu blog/szkice/
-(naglowki: Tytul, Slug, Data, Obrazek, Zajawka, Opis, Kategoria,
+(naglowki: Tytul, Slug, Data, Obrazek karta, Obrazek wpis, Zajawka,
+Opis, Kategoria,
 a potem tresc; puste linie oddzielaja akapity, "## " tworzy srodtytul,
-linie od "- " tworza liste). Obrazek w formacie WebP o szerokosci
-ok. 1200 px wrzuc do blog/img/. Nastepnie uruchom w glownym katalogu:
+linie od "- " tworza liste). Oba obrazki w formacie WebP wrzuc do
+blog/img/. Obraz karty powinien miec proporcje 1,6:1, a obraz w tresci
+wpisu 2,7:1. Nastepnie uruchom w glownym katalogu:
 
     python3 nowy-wpis.py blog/szkice/nazwa-szkicu.txt
 
 Skrypt utworzy strone wpisu, doda go do listy na stronie glownej
 (blog/posts.js) i do sitemap.xml. Po publikacji zglos adres wpisu
 w Google Search Console (Sprawdzenie adresu URL -> Popros o zindeksowanie).
+
+Alternatywnie otworz generator-wpisu/index.html w przegladarce. Program
+dziala lokalnie, kadruje dwa wybrane obrazy i pobiera paczke ZIP z plikami
+gotowymi do recznego wgrania.
 
 2. PRZEBUDOWA ARKUSZA CSS
 --------------------------

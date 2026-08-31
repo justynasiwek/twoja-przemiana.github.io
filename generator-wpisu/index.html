@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator wpisu blogowego</title>
+    <meta name="description" content="Lokalny generator plików nowego wpisu dla witryny Twoja Przemiana.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="intro">
+            <p class="eyebrow">Twoja Przemiana</p>
+            <h1>Generator wpisu blogowego</h1>
+            <p>Wpisz treść, wybierz dwa różne zdjęcia i pobierz paczkę gotową do ręcznego wgrania na stronę.</p>
+        </header>
+
+        <form id="post-form" novalidate>
+            <section class="panel" aria-labelledby="content-heading">
+                <div class="panel-heading">
+                    <div>
+                        <p class="step">Treść wpisu</p>
+                        <h2 id="content-heading">Podstawowe informacje</h2>
+                    </div>
+                    <span class="required-note">Pola oznaczone * są wymagane</span>
+                </div>
+
+                <div class="field-grid">
+                    <label class="field field-wide">
+                        <span>Tytuł *</span>
+                        <input id="title" name="title" type="text" maxlength="120" autocomplete="off" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Data publikacji *</span>
+                        <input id="date" name="date" type="date" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Kategoria *</span>
+                        <select id="category" name="category" required>
+                            <option value="osobisty">Rozwój osobisty</option>
+                            <option value="zawodowy">Rozwój zawodowy</option>
+                            <option value="terapia">Diagnoza i terapia</option>
+                        </select>
+                    </label>
+
+                    <label class="field field-wide">
+                        <span>Treść wpisu *</span>
+                        <textarea id="content" name="content" maxlength="5000" rows="14" required placeholder="Puste linie oddzielają akapity. Linia zaczynająca się od ## tworzy śródtytuł, a linie od - tworzą listę."></textarea>
+                        <small><span id="character-count">0</span> z 5000 znaków</small>
+                    </label>
+
+                    <label class="field field-wide">
+                        <span>Zajawka na stronę główną</span>
+                        <textarea id="excerpt" name="excerpt" maxlength="260" rows="3" placeholder="Opcjonalnie. Bez tego pola program utworzy zajawkę z początku wpisu."></textarea>
+                    </label>
+
+                    <label class="field field-wide">
+                        <span>Opis dla wyszukiwarki</span>
+                        <textarea id="description" name="description" maxlength="170" rows="2" placeholder="Opcjonalnie. Zalecana długość to 140 do 160 znaków."></textarea>
+                    </label>
+                </div>
+            </section>
+
+            <section class="panel" aria-labelledby="images-heading">
+                <div class="panel-heading">
+                    <div>
+                        <p class="step">Dwa kadry</p>
+                        <h2 id="images-heading">Obrazy wpisu</h2>
+                    </div>
+                    <span class="required-note">Program zapisze pliki jako WebP</span>
+                </div>
+
+                <div class="image-grid">
+                    <label class="image-field" for="card-image">
+                        <span class="image-label">Obraz na stronę główną *</span>
+                        <span class="image-ratio">Proporcja 1,6:1, wynik 960 na 600 px</span>
+                        <span class="preview preview-card" id="card-preview"><span>Wybierz zdjęcie</span></span>
+                        <input id="card-image" name="cardImage" type="file" accept="image/jpeg,image/png,image/webp" required>
+                    </label>
+
+                    <label class="image-field" for="content-image">
+                        <span class="image-label">Obraz w treści wpisu *</span>
+                        <span class="image-ratio">Proporcja 2,7:1, wynik 1350 na 500 px</span>
+                        <span class="preview preview-content" id="content-preview"><span>Wybierz zdjęcie</span></span>
+                        <input id="content-image" name="contentImage" type="file" accept="image/jpeg,image/png,image/webp" required>
+                    </label>
+                </div>
+                <p class="image-help">Zdjęcia są kadrowane od środka. Najważniejszy element najlepiej umieścić blisko centrum kadru.</p>
+            </section>
+
+            <section class="finish-panel" aria-labelledby="finish-heading">
+                <div>
+                    <p class="step">Gotowa paczka</p>
+                    <h2 id="finish-heading">Utwórz pliki do wgrania</h2>
+                    <p>W paczce znajdą się strona wpisu, dwa obrazy, pełna lista wpisów, mapa witryny i instrukcja.</p>
+                </div>
+                <button id="generate-button" type="submit">Pobierz paczkę ZIP</button>
+            </section>
+
+            <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+        </form>
+
+        <aside class="history">
+            <p>Generator pamięta wpisy utworzone w tej przeglądarce, dzięki temu kolejna paczka zawiera także wcześniejsze wpisy.</p>
+            <button id="clear-history" type="button" class="link-button">Wyczyść historię generatora</button>
+        </aside>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

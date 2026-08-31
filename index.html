@@ -801,7 +801,7 @@
                 mainGrid.innerHTML = mainPosts.map(post => `
                     <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
                         <div class="overflow-hidden">
-                            <img src="blog/img/${post.image}" alt="${post.title}" loading="lazy" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-8">
                             <p class="text-xs text-[#c4a660] font-semibold uppercase mb-2">${post.date}</p>
@@ -818,7 +818,7 @@
                     moreGrid.innerHTML = morePosts.map(post => `
                         <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
                             <div class="overflow-hidden">
-                                <img src="blog/img/${post.image}" alt="${post.title}" loading="lazy" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-5">
                                 <p class="text-xs text-[#c4a660] font-semibold mb-1">${post.date}</p>

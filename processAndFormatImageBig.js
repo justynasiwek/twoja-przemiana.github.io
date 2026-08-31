@@ -1,100 +1,80 @@
 /**
- * Funkcja wczytuje obraz, skaluje go do proporcji 1:2.7 (wys:szer) 
- * z zachowaniem proporcji samego zdjęcia i minimalną szerokością800px.
- * * @param {string} imageUrl - Ścieżka do obrazu na serwerze
- * @returns {Promise<HTMLImageElement>} - Obietnica zwracająca gotowy element <img>
+ * Kadruje obraz nagłówka wpisu do formatu 2,7:1 i zwraca WebP 1350 na 500 px.
+ * Obraz jest przycinany symetrycznie od środka, bez rozciągania i bez pustych pól.
+ *
+ * @param {string|Blob} imageSource Adres obrazu albo plik wybrany z dysku.
+ * @returns {Promise<HTMLImageElement>} Gotowy element img z obrazem WebP.
  */
-function processAndFormatImageBig(imageUrl) {
+function processAndFormatImageBig(imageSource) {
     return new Promise((resolve, reject) => {
-        const img = new Image();
-        
-        // Zabezpieczenie na wypadek ładowania obrazów z innych domen (CORS)
-        img.crossOrigin = "Anonymous"; 
+        const image = new Image();
+        let objectUrl = "";
 
-        img.onload = () => {
-            const origW = img.width;
-            const origH = img.height;
-            const targetRatio = 2.7; // Szerokość do wysokości (2.7 / 1)
+        if (typeof imageSource === "string") {
+            image.crossOrigin = "anonymous";
+        } else if (imageSource instanceof Blob) {
+            objectUrl = URL.createObjectURL(imageSource);
+        } else {
+            reject(new TypeError("Źródłem obrazu musi być adres URL albo plik."));
+            return;
+        }
 
-            let canvasW, canvasH;
+        image.onload = () => {
+            const targetWidth = 1350;
+            const targetHeight = 500;
+            const targetRatio = targetWidth / targetHeight;
+            const sourceRatio = image.naturalWidth / image.naturalHeight;
+            let sourceX = 0;
+            let sourceY = 0;
+            let sourceWidth = image.naturalWidth;
+            let sourceHeight = image.naturalHeight;
 
-            // 1. Ustalenie wymiarów płótna (canvas) tak, aby miało proporcje 1:1.6
-            if (origW / origH > targetRatio) {
-                // Obraz jest szerszy niż proporcja 1:1.6
-                canvasW = origW;
-                canvasH = origW / targetRatio;
+            if (sourceRatio > targetRatio) {
+                sourceWidth = image.naturalHeight * targetRatio;
+                sourceX = (image.naturalWidth - sourceWidth) / 2;
             } else {
-                // Obraz jest węższy (lub ma dokładnie 1:1.6) - tło będzie dodane z prawej
-                canvasH = origH;
-                canvasW = origH * targetRatio;
+                sourceHeight = image.naturalWidth / targetRatio;
+                sourceY = (image.naturalHeight - sourceHeight) / 2;
             }
 
-            // 2. Weryfikacja minimalnej długości (szerokości) = 800px
-            let scaleMultiplier = 1;
-            if (canvasW < 800) {
-                scaleMultiplier = 800 / canvasW;
-                canvasW = 800;
-                canvasH = canvasH * scaleMultiplier; // Zachowujemy wymuszoną proporcję 1:1.6 płótna
+            const canvas = document.createElement("canvas");
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+            const context = canvas.getContext("2d", { alpha: false });
+            context.fillStyle = "#ffffff";
+            context.fillRect(0, 0, targetWidth, targetHeight);
+            context.drawImage(
+                image,
+                sourceX,
+                sourceY,
+                sourceWidth,
+                sourceHeight,
+                0,
+                0,
+                targetWidth,
+                targetHeight
+            );
+
+            if (objectUrl) {
+                URL.revokeObjectURL(objectUrl);
             }
 
-            // 3. Przygotowanie Canvas
-            const canvas = document.createElement('canvas');
-            canvas.width = canvasW;
-            canvas.height = canvasH;
-            const ctx = canvas.getContext('2d');
-
-            // 4. Obliczenie nowych wymiarów samego obrazka (skalowanie bez utraty proporcji)
-            const drawW = origW * scaleMultiplier;
-            const drawH = origH * scaleMultiplier;
-
-            // 5. Rysowanie obrazu w lewym górnym rogu (0,0)
-            // Dzięki temu reszta płótna (z prawej lub na dole) pozostaje domyślnie przezroczysta.
-            ctx.drawImage(img, 0, 0, drawW, drawH);
-
-            // 6. Konwersja do elementu <img> gotowego do wklejenia na stronę
-            const finalImg = document.createElement('img');
-            // Używamy 'image/png', aby zachować przezroczystość tła
-            finalImg.src = canvas.toDataURL("image/png"); 
-            
-            finalImg.onload = () => resolve(finalImg);
+            const result = new Image();
+            result.width = targetWidth;
+            result.height = targetHeight;
+            result.alt = "Skadrowany obraz nagłówka wpisu";
+            result.onload = () => resolve(result);
+            result.onerror = () => reject(new Error("Nie udało się utworzyć obrazu WebP."));
+            result.src = canvas.toDataURL("image/webp", 0.86);
         };
 
-        img.onerror = (err) => {
-            reject(new Error("Nie udało się wczytać obrazu. Sprawdź ścieżkę lub ustawienia CORS."));
+        image.onerror = () => {
+            if (objectUrl) {
+                URL.revokeObjectURL(objectUrl);
+            }
+            reject(new Error("Nie udało się wczytać obrazu."));
         };
 
-        img.src = imageUrl;
+        image.src = objectUrl || imageSource;
     });
 }
-
-// uzycie:
-// <!DOCTYPE html>
-// <html lang="pl">
-// <head>
-//     <meta charset="UTF-8">
-//     <title>Skalowanie Obrazu</title>
-// </head>
-// <body>
-//     <h2>Wynikowy obraz:</h2>
-//     <div id="image-container"></div>
-
-//     <script>
-//         // Przykład użycia funkcji:
-//         const urlObrazu = "sciezka/do/twojego/obrazka.jpg";
-
-//         processAndFormatImageBig(urlObrazu)
-//             .then(gotowyObraz => {
-//                 // gotowyObraz to pełnoprawny element <img src="...">
-//                 // Możesz mu nadać klasy CSS, atrybuty alt itp.
-//                 gotowyObraz.alt = "Przeskalowany obraz";
-//                 gotowyObraz.style.border = "1px solid #ccc"; // Tylko dla podglądu krawędzi
-
-//                 // Wklejamy obraz na stronę www do wybranego kontenera
-//                 document.getElementById('image-container').appendChild(gotowyObraz);
-//             })
-//             .catch(blad => {
-//                 console.error("Wystąpił błąd:", blad);
-//             });
-//     </script>
-// </body>
-// </html>

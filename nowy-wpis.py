@@ -18,7 +18,8 @@ Format pliku szkicu (.txt, kodowanie UTF-8):
 Tytuł: Jak rozpoznać wypalenie zawodowe?
 Slug: jak-rozpoznac-wypalenie-zawodowe
 Data: 2026-06-15
-Obrazek: rozpoznac-wypalenie.webp
+Obrazek karta: rozpoznac-wypalenie-card.webp
+Obrazek wpis: rozpoznac-wypalenie-post.webp
 Zajawka: Krótki opis widoczny na liście wpisów (1-2 zdania).
 Opis: Opis meta dla wyszukiwarek, ok. 150 znaków.
 Kategoria: zawodowy
@@ -38,7 +39,8 @@ Pole "Kategoria" (decyduje o boksie CTA na końcu wpisu):
     zawodowy  -> link do rozwoj-zawodowy.html
     terapia   -> link do diagnoza-i-terapia.html
 
-Obrazek wrzuć wcześniej do blog/img/ (najlepiej WebP, szerokość ok. 1200 px).
+Oba obrazy wrzuć wcześniej do blog/img/. Obraz karty powinien mieć proporcję
+1,6:1, a obraz wpisu 2,7:1. Najlepiej użyć formatu WebP.
 Po dodaniu wpisu NIE trzeba przebudowywać CSS, o ile treść używa tylko
 zwykłych akapitów, nagłówków i list (szablon pokrywa te style).
 """
@@ -74,7 +76,9 @@ def parsuj_szkic(path):
     naglowki, tresc = {}, []
     lines = raw.split("\n")
     i = 0
-    wzor = re.compile(r"^(Tytuł|Slug|Data|Obrazek|Zajawka|Opis|Kategoria)\s*:\s*(.+)$")
+    wzor = re.compile(
+        r"^(Tytuł|Slug|Data|Obrazek karta|Obrazek wpis|Zajawka|Opis|Kategoria)\s*:\s*(.+)$"
+    )
     while i < len(lines):
         m = wzor.match(lines[i])
         if m:
@@ -85,7 +89,8 @@ def parsuj_szkic(path):
         else:
             tresc = lines[i:]
             break
-    wymagane = ["Tytuł", "Slug", "Data", "Obrazek", "Zajawka", "Opis", "Kategoria"]
+    wymagane = ["Tytuł", "Slug", "Data", "Obrazek karta", "Obrazek wpis",
+                "Zajawka", "Opis", "Kategoria"]
     brak = [w for w in wymagane if w not in naglowki]
     if brak:
         sys.exit(f"BŁĄD: w szkicu brakuje pól: {', '.join(brak)}")
@@ -95,6 +100,8 @@ def parsuj_szkic(path):
         sys.exit("BŁĄD: Data musi mieć format RRRR-MM-DD, np. 2026-06-15")
     if not re.fullmatch(r"[a-z0-9\-]+", naglowki["Slug"]):
         sys.exit("BŁĄD: Slug może zawierać tylko małe litery, cyfry i myślniki")
+    if naglowki["Obrazek karta"] == naglowki["Obrazek wpis"]:
+        sys.exit("BŁĄD: obraz karty i obraz wpisu muszą być różnymi plikami")
     return naglowki, "\n".join(tresc).strip()
 
 
@@ -133,8 +140,9 @@ def main():
     plik_html = f"blog/{slug}.html"
     if os.path.exists(plik_html):
         sys.exit(f"BŁĄD: {plik_html} już istnieje. Zmień slug albo usuń stary plik.")
-    if not os.path.exists(f"blog/img/{n['Obrazek']}"):
-        print(f"UWAGA: nie znaleziono blog/img/{n['Obrazek']} – pamiętaj, by go dodać.")
+    for pole in ("Obrazek karta", "Obrazek wpis"):
+        if not os.path.exists(f"blog/img/{n[pole]}"):
+            print(f"UWAGA: nie znaleziono blog/img/{n[pole]} – pamiętaj, by go dodać.")
 
     cta_href, cta_hook, cta_label = KATEGORIE[n["Kategoria"]]
     tytul_krotki = n["Tytuł"] if len(n["Tytuł"]) <= 40 else n["Tytuł"][:37].rstrip() + "…"
@@ -145,7 +153,8 @@ def main():
         "{{TITLE_SHORT}}": html.escape(tytul_krotki, quote=False),
         "{{SLUG}}": slug,
         "{{DESCRIPTION}}": html.escape(n["Opis"]),
-        "{{IMAGE}}": n["Obrazek"],
+        "{{CARD_IMAGE}}": n["Obrazek karta"],
+        "{{CONTENT_IMAGE}}": n["Obrazek wpis"],
         "{{DATE_ISO}}": n["Data"],
         "{{DATE_PL}}": data_po_polsku(n["Data"]),
         "{{CONTENT}}": tresc_na_html(tresc),
@@ -165,7 +174,8 @@ def main():
         f'        slug: "{slug}",\n'
         f'        title: "{n["Tytuł"].replace(chr(34), chr(92)+chr(34))}",\n'
         f'        date: "{data_po_polsku(n["Data"])}",\n'
-        f'        image: "{n["Obrazek"]}",\n'
+        f'        cardImage: "{n["Obrazek karta"]}",\n'
+        f'        contentImage: "{n["Obrazek wpis"]}",\n'
         f'        excerpt: "{n["Zajawka"].replace(chr(34), chr(92)+chr(34))}"\n'
         "    },\n"
     )

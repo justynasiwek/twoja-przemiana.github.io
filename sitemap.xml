@@ -7,60 +7,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.twoja-przemiana.pl/blog/wiosna.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/szefowie.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/wypalenie-zawodowe.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/pracoholizm.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/menedzerowie-nie-doceniaja.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/wiosenne-porzadki.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/szczescie.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/decyzje.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.twoja-przemiana.pl/blog/pewnosc-siebie.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.twoja-przemiana.pl/rozwoj-osobisty.html</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -79,14 +25,20 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.twoja-przemiana.pl/blog/jak-rozpoznac-wypalenie-zawodowe.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://www.twoja-przemiana.pl/blog/jak-upewnianie-sie-moze-obnizac-samoocene.html</loc>
+    <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.twoja-przemiana.pl/blog/psycholog-psychoterapeuta-roznice.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <loc>https://www.twoja-przemiana.pl/blog/toksyczny_szef.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/odpoczynek.html</loc>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -97,8 +49,68 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.twoja-przemiana.pl/blog/odpoczynek.html</loc>
-    <lastmod>2026-08-12</lastmod>
+    <loc>https://www.twoja-przemiana.pl/blog/psycholog-psychoterapeuta-roznice.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/jak-rozpoznac-wypalenie-zawodowe.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/wiosna.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/szefowie.html</loc>
+    <lastmod>2025-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/wypalenie-zawodowe.html</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/pracoholizm.html</loc>
+    <lastmod>2025-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/menedzerowie-nie-doceniaja.html</loc>
+    <lastmod>2025-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/wiosenne-porzadki.html</loc>
+    <lastmod>2025-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/szczescie.html</loc>
+    <lastmod>2025-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/decyzje.html</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.twoja-przemiana.pl/blog/pewnosc-siebie.html</loc>
+    <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
