@@ -84,6 +84,29 @@
             opacity: 1;
         }
 
+        /* The full navigation needs more room than Tailwind's md breakpoint. */
+        .desktop-nav {
+            display: none;
+        }
+        .navbar-wrap .hamburger {
+            display: flex;
+        }
+        @media (max-width: 1199px) {
+            #mobile-menu.open {
+                display: block;
+            }
+        }
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                display: flex;
+                gap: 1rem;
+            }
+            .navbar-wrap .hamburger,
+            #mobile-menu {
+                display: none !important;
+            }
+        }
+
         /* Hamburger animation */
         .hamburger span {
             transition: transform 0.3s ease, opacity 0.3s ease;
@@ -169,9 +192,9 @@
                         "@type": "OfferCatalog",
                         "name": "Usługi",
                         "itemListElement": [
+                            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnoza i terapia poznawczo-behawioralna (CBT)", "url": "https://www.twoja-przemiana.pl/diagnoza-i-terapia.html"}}    
                             {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rozwój osobisty – life coaching i asertywna komunikacja", "url": "https://www.twoja-przemiana.pl/rozwoj-osobisty.html"}},
-                            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rozwój zawodowy – coaching kariery i executive coaching", "url": "https://www.twoja-przemiana.pl/rozwoj-zawodowy.html"}},
-                            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnoza i terapia poznawczo-behawioralna (CBT)", "url": "https://www.twoja-przemiana.pl/diagnoza-i-terapia.html"}}
+                            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rozwój zawodowy – coaching kariery i executive coaching", "url": "https://www.twoja-przemiana.pl/rozwoj-zawodowy.html"}},  
                         ]
                     }
                 },
@@ -275,17 +298,18 @@
             </a>
         </div>
         <!-- Desktop Nav -->
-        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
+        <div class="desktop-nav items-center text-sm font-medium text-gray-800">
             <a href="#start" class="nav-link pb-1 transition-all">Strona główna</a>
             <a href="#o-mnie" class="nav-link hover:text-black pb-1 transition-all">O mnie</a>
-            <a href="#rozwoj" class="nav-link hover:text-black pb-1 transition-all">Rozwój</a>
             <a href="#diagnoza" class="nav-link hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="#rozwoj_osobisty" class="nav-link hover:text-black pb-1 transition-all">Rozwój osobisty</a>
+            <a href="#rozwoj-zawodowy" class="nav-link hover:text-black pb-1 transition-all">Rozwój zawodowy</a>
             <a href="#blog" class="nav-link hover:text-black pb-1 transition-all">Blog</a>
             <a href="#zapisy" class="nav-link hover:text-black pb-1 transition-all">Umów termin</a>
             <a href="#kontakt" class="nav-link hover:text-black pb-1 transition-all">Kontakt</a>
         </div>
         <!-- Mobile Hamburger -->
-        <button id="mobile-menu-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+        <button id="mobile-menu-btn" class="hamburger flex-col gap-1.5 p-2" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false">
             <span class="block w-6 h-0.5 bg-gray-800"></span>
             <span class="block w-6 h-0.5 bg-gray-800"></span>
             <span class="block w-6 h-0.5 bg-gray-800"></span>
@@ -296,12 +320,13 @@
     <div id="navbar-spacer"></div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;">
+    <div id="mobile-menu" class="bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;" aria-hidden="true">
         <div class="flex flex-col gap-4 py-4 text-sm font-medium text-gray-800">
             <a href="#start" class="nav-link-mobile py-1 border-b border-gray-100">Strona główna</a>
             <a href="#o-mnie" class="nav-link-mobile py-1 border-b border-gray-100">O mnie</a>
-            <a href="#rozwoj" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój</a>
             <a href="#diagnoza" class="nav-link-mobile py-1 border-b border-gray-100">Diagnoza i terapia</a>
+            <a href="#rozwoj_osobisty" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój osobisty</a>
+            <a href="#rozwoj-zawodowy" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój zawodowy</a>
             <a href="#blog" class="nav-link-mobile py-1 border-b border-gray-100">Blog</a>
             <a href="#zapisy" class="nav-link-mobile py-1 border-b border-gray-100">Umów termin</a>
             <a href="#kontakt" class="nav-link-mobile py-1">Kontakt</a>
@@ -344,31 +369,6 @@
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     
-                    <!-- Card 1: Rozwój osobisty -->
-                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
-                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
-                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
-                            <i data-lucide="heart-handshake" class="text-white w-9 h-9"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój osobisty</h3>
-                        <button onclick="scrollToSection('rozwoj')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
-                            Dowiedz się więcej
-                        </button>
-                    </div>
-
-                    <!-- Card 2: Rozwój zawodowy -->
-                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
-                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
-                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
-                            <i data-lucide="briefcase" class="text-white w-9 h-9"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój zawodowy</h3>
-                        <button onclick="scrollToSection('rozwoj')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
-                            Dowiedz się więcej
-                        </button>
-                    </div>
-
-                    
                     <!-- Card 3: Diagnoza i terapia -->
                     <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
                         <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
@@ -380,6 +380,33 @@
                             Dowiedz się więcej
                         </button>
                     </div>
+
+                    <!-- Card 1: Rozwój osobisty -->
+                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
+                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
+                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
+                            <i data-lucide="heart-handshake" class="text-white w-9 h-9"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój osobisty</h3>
+                        <button onclick="scrollToSection('rozwoj_osobisty')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
+                            Dowiedz się więcej
+                        </button>
+                    </div>
+
+                    <!-- Card 2: Rozwój zawodowy -->
+                    <div class="fade-child bg-white rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-lg h-auto md:h-[280px]">
+                        <div class="w-20 h-20 rounded-full bg-[#9eb2a2] flex items-center justify-center mb-4 relative">
+                            <div class="absolute inset-1 rounded-full border-2 border-white opacity-50"></div>
+                            <i data-lucide="briefcase" class="text-white w-9 h-9"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-center mb-6">Rozwój zawodowy</h3>
+                        <button onclick="scrollToSection('rozwoj-zawodowy')" class="bg-[#c4a660] text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-[#b09455] transition-colors w-full">
+                            Dowiedz się więcej
+                        </button>
+                    </div>
+
+                    
+
                 </div>
             </div>
 
@@ -441,16 +468,19 @@
                 <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] mb-2 tracking-wide">O mnie</h2>
                 <div class="h-[2px] w-20 bg-[#c4a660] mb-8"></div>
                 <p class="text-base leading-relaxed mb-5">
-                    Jestem psychologiem, dyplomowanym coachem oraz terapeutką, pracującą w nurcie poznawczo-behawioralnym (CBT). W mojej pracy z Klientem najważniejsza jest empatia, relacja i efekty. Wsłuchuję się w oczekiwania dobierając metody pracy terapeutycznej lub coaching'owej do indywidualnych potrzeb i rodzaju problemów, które pomagam Klientowi pokonać.
-                </p>
-                <p class="text-base leading-relaxed mb-5">
+                    Jestem psychologiem, dyplomowanym coachem oraz terapeutką, pracującą w nurcie poznawczo-behawioralnym (CBT). W mojej pracy z Klientem najważniejsza jest empatia, relacja i efekty. Wsłuchuję się w oczekiwania dobierając metody pracy terapeutycznej lub coaching'owej do indywidualnych potrzeb i rodzaju problemów, które pomagam Klientowi pokonać. 
                     Istotne jest dla mnie, aby Klient w możliwie najkrótszym czasie odczuł poprawę swojej sytuacji oraz wzrost satysfakcji ze swojego życia i relacji.
                 </p>
                 <p class="text-base leading-relaxed mb-5">
-                    Ukończyłam psychologię na Uniwersytecie Warszawskim, akademicki kurs coachingu na Uniwersytecie SWPS, obecnie jestem w trakcie 4-letniego całościowego szkolenia psychoterapeutycznego w Szkole Psychoterapii Poznawczo-Behawioralnej WSB-NLU.
+                    W pracy terapeutycznej wykorzystuję sprawdzone metody o skuteczności potwierdzonej badaniami. Swoją pracę opieram na technikach dialogu
+                    motywującego, terapii poznawczo-behawioralnej, stosuję też techniki uważnościowe i relaksacyjne, pracę z ciałem. Korzystam z narzędzi
+                    poznawczych i behawioralnych, ale też z nowoczesnych metod tzw. trzeciej fali: DBT, ACT i elementów terapii schematów, w zależności od potrzeb i indywidualnych preferencji Klienta.
+                </p>
+                <p class="text-base leading-relaxed mb-5">
+                    Ukończyłam psychologię na Uniwersytecie Warszawskim, akademicki kurs coachingu na Uniwersytecie SWPS, jestem po drugim roku 4-letniego całościowego szkolenia psychoterapeutycznego w Szkole Psychoterapii Poznawczo-Behawioralnej WSB-NLU.
                 </p>
                 <p class="text-base leading-relaxed mb-6">
-                    Mam doświadczenie menedżerskie w pracy w HR, PR oraz sprzedaży, które wykorzystuję w coachingu kariery i menedżerskim, a także coachingu wizerunkowym.
+                    Mam doświadczenie menedżerskie w pracy w HR, PR oraz sprzedaży, które wykorzystuję w coachingu kariery i menedżerskim, a także wizerunkowym.
                 </p>
                 <p class="text-sm font-semibold text-[#1d1d1d]">mgr Justyna Siwek</p>
                 <p class="text-sm text-[#c4a660] italic">Psycholog · Coach · Terapeuta CBT</p>
@@ -464,14 +494,88 @@
             <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] mb-2 tracking-wide">W czym mogę Ci pomóc</h2>
             <div class="h-[2px] w-20 bg-[#c4a660] mb-10"></div>
 
+            <!-- Diagnoza i terapia Section (full page) -->
+    <section id="diagnoza" class="fade-section bg-[#f1ebdb] py-12 md:py-13 px-4 md:px-6">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="brain" class="text-white w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] tracking-wide">Diagnoza i terapia</h2>
+            </div>
+            <div class="h-[2px] w-20 bg-[#c4a660] ml-[60px] mb-8"></div>
+            <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Diagnoza</p>
+            <p class="text-base text-gray-700 leading-relaxed mb-4">
+                Czujesz, że masz problem, z którym sobie nie możesz już poradzić, Twoje życie przez to nie jest w pełni satysfakcjonujące, cierpisz Ty, może także Twoi bliscy. To mogą być problemy nowe, lub takie, które ciągną się od lat. Utrudniają one codzienne funkcjonowanie, wpływają na pracę, naukę, rodzinę i relacje z innymi. Podczas konsultacji pomogę:
+            </p>
+            <ul class="list-none space-y-2 pl-4">
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zdiagnozować problem,</li>
+               <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> ustalić, czy jest to jedno z zaburzeń psychicznych, czy tylko wynik zmęczenia czy wypalenia,</li>
+               <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> doradzę jak poradzić sobie z problemem i z jakiej pomocy warto skorzystać.</li>
+            </ul>
+            <div class="h-[2px] w-20 bg-[#c4a660] ml-[60px] mb-8"></div>
+            <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Terapia</p>
+            <p class="text-base text-gray-700 leading-relaxed mb-4">Mogę Ci skutecznie pomóc:</p>
+            <ul class="list-none space-y-2 pl-4">
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać depresję i obniżony nastrój,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać lęki i fobie,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> odzyskać kontrolę nad emocjami,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> przepracować schematy, które utrudniają budowanie satysfakcjonujących relacji lub powodują wchodzenie w toksyczne relacje,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zrozumieć i przepracować problemy wynikające z ADHD,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać uzależnienia takie jak pracoholizm, zakupoholizm, skłonności do gier i hazardu, ekranów,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie w sytuacji współuzależnienia lub trudności związanych z byciem członkiem rodziny osoby uzależnionej (DDA),</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pozbyć się perfekcjonizmu, bezsenności, prokrastynacji,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać obsesje i kompulsje oraz fobie, które utrudniają codzienne życie.</li>
+            </ul>
+             <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">&nbsp;</p>
+             <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Interwencja kryzysowa</p>
+             <p class="text-base text-gray-700 leading-relaxed mb-4">To może być sytuacja dla Ciebie nowa, kryzysowa, jak śmierć bliskiej osoby, czy jej poważna choroba, utrata pracy i inne, niesodziewane zmiany w życiu. Emocje i natłok myśli w takiej sytuacji utrudniają codzienne funkcjonowanie, wpływają na pracę, naukę, rodzinę i relacje z innymi. Mogę skutecznie pomóc:</p>
+
+            <ul class="list-none space-y-2 pl-4">
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie z negatywnymi emocjami w trudnej sytuacji życiowej,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zaplanować kroki potrzebne do wyjścia lub zminimalizowania skutków kryzysu,</li>
+                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zrozumieć problemy psychologiczne bliskich osób.</li>
+            </ul>
+
+            <div class="mt-8">
+                <a href="diagnoza-i-terapia.html" class="inline-flex items-center gap-2 bg-[#3b4b40] hover:bg-[#2e3b32] text-white font-medium px-6 py-3 rounded-lg text-sm transition-colors">Dowiedz się więcej o diagnozie i terapii <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </section>
+
+
             <!-- Rozwój osobisty -->
-            <div class="mb-14">
+            <div class="mb-14" id="rozwoj_osobisty">
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
                         <i data-lucide="heart-handshake" class="text-white w-6 h-6"></i>
                     </div>
                     <h3 class="font-serif text-xl md:text-2xl font-bold text-[#1f2922]">Rozwój osobisty</h3>
                 </div>
+                <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Samoocena i równowaga psychologiczna</p>
+
+                <p class="text-base text-gray-700 leading-relaxed mb-4">Jeśli kompleksy utrudniają Ci budowanie relacji, ciągle porównujesz się do innych, w pracy dopada Cię syndrom oszusta, nie wierzysz w swoje możliwości mogę wspierać Twoją przemianę:
+                </p>
+                <ul class="list-none space-y-2 mb-6 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pomogę odkryć Twój potencjał, zbudować stabilną i pewną samoocenę,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę, jak rozwijać Twoje mocne i słabsze strony,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę, jak radzić sobie z nadmiernym krytykiem wewnętrznym i zyskać wiarę w siebie,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pomogę rozwinąć umiejętności codziennego dbania o równowagę psychiczną,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę jak rozwijać uważność, samowspółczucie i akceptację.</li>
+                </ul>
+
+                
+                <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Asertywna komunikacja</p>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">
+                    Jeśli czujesz, że nie dogadujesz się z innymi, nie potrafisz mówić otwarcie o swoich opiniach i uczuciach, a wszyscy wchodzą Ci na głowę – mogę pomóc rozwiązywać problemy w relacjach:
+                </p>
+                <ul class="list-none space-y-2 mb-6 pl-4">
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę jak rozwijać asertywność,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę skutecznej i otwartej komunikacji,</li>
+                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę stawiania granic. </li>
+                </ul>
+
+
                 <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Life coaching</p>
 
                 <p class="text-base text-gray-700 leading-relaxed mb-4">Jeśli Twoje życie Cię nie zadowala w pełni, emocje Cię przytłaczają, masz dużo obaw i trudności w podejmowaniu decyzji, albo dużo stresu i czujesz że nie dajesz rady – pomogę:
@@ -482,16 +586,6 @@
                     <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zadbać o swoją równowagę psychologiczną,</li>
                     <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> odnaleźć motywację do działania,</li>
                     <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> usunąć blokady, które nie pozwalają iść do przodu.</li>
-                </ul>
-
-                 <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Asertywna komunikacja</p>
-                <p class="text-base text-gray-700 leading-relaxed mb-4">
-                    Jeśli czujesz, że nie dogadujesz się z innymi, nie potrafisz mówić otwarcie o swoich opiniach i uczuciach, a wszyscy wchodzą Ci na głowę – mogę pomóc rozwiązywać problemy w relacjach:
-                </p>
-                <ul class="list-none space-y-2 pl-4">
-                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokażę jak rozwijać asertywność,</li>
-                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę skutecznej i otwartej komunikacji,</li>
-                    <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> nauczę stawiania granic. </li>
                 </ul>
 
             <div class="mt-8">
@@ -534,54 +628,7 @@
         </div>
     </section>
 
-    <!-- Diagnoza i terapia Section (full page) -->
-    <section id="diagnoza" class="fade-section bg-[#f1ebdb] py-12 md:py-13 px-4 md:px-6">
-        <div class="max-w-[1100px] mx-auto">
-            <div class="flex items-center gap-3 mb-2">
-                <div class="w-12 h-12 rounded-full bg-[#9eb2a2] flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="brain" class="text-white w-6 h-6"></i>
-                </div>
-                <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] tracking-wide">Diagnoza i terapia</h2>
-            </div>
-            <div class="h-[2px] w-20 bg-[#c4a660] ml-[60px] mb-8"></div>
-            <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Diagnoza</p>
-            <p class="text-base text-gray-700 leading-relaxed mb-4">
-                Czujesz, że masz problem, z którym sobie nie możesz już poradzić, Twoje życie przez to nie jest w pełni satysfakcjonujące, cierpisz Ty, może także Twoi bliscy. To mogą być problemy nowe, lub takie, które ciągną się od lat. Utrudniają one codzienne funkcjonowanie, wpływają na pracę, naukę, rodzinę i relacje z innymi. Podczas konsultacji pomogę:
-            </p>
-            <ul class="list-none space-y-2 pl-4">
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zdiagnozować problem,</li>
-               <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> ustalić, czy jest to jedno z zaburzeń psychicznych, czy tylko wynik zmęczenia czy wypalenia,</li>
-               <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> doradzę jak poradzić sobie z problemem i z jakiej pomocy warto skorzystać.</li>
-            </ul>
-            <div class="h-[2px] w-20 bg-[#c4a660] ml-[60px] mb-8"></div>
-            <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Terapia</p>
-            <p class="text-base text-gray-700 leading-relaxed mb-4">Mogę Ci skutecznie pomóc:</p>
-            <ul class="list-none space-y-2 pl-4">
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać depresję i obniżony nastrój,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać lęki i fobie,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać uzależnienia takie jak pracoholizm, zakupoholizm, skłonności do gier i hazardu, ekranów,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie w sytuacji współuzależnienia lub trudności związanych z byciem członkiem rodziny osoby uzależnionej (DDA),</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pozbyć się perfekcjonizmu, bezsenności, prokrastynacji,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> pokonać obsesje i kompulsje oraz fobie, które utrudniają codzienne życie.</li>
-            </ul>
-            <p class="text-base text-gray-700 leading-relaxed mb-4">
-            W pracy terapeutycznej wykorzystuję techniki dialogu motywującego, terapii poznawczo-behawioralnej, techniki uważnościowe i relaksacyjne, pracę z ciałem. Korzystam z narzędzi CBT, ale też tzw. trzeciej fali: DBT, ACT i elementów terapii schematów w zależności od potrzeb i indywidualnych preferencji Klienta.</p>
-
-             <p class="text-base text-gray-700 leading-relaxed font-bold mb-4">Interwencja kryzysowa</p>
-             <p class="text-base text-gray-700 leading-relaxed mb-4">To może być sytuacja dla Ciebie nowa, kryzysowa, jak śmierć bliskiej osoby, czy jej poważna choroba. Emocje i natłok myśli w takiej sytuacji utrudniają codzienne funkcjonowanie, wpływają na pracę, naukę, rodzinę i relacje z innymi. Mogę skutecznie pomóc:</p>
-
-            <ul class="list-none space-y-2 pl-4">
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> poradzić sobie z negatywnymi emocjami w trudnej sytuacji życiowej,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zaplanować kroki potrzebne do wyjścia lub zminimalizowania skutków kryzysu,</li>
-                <li class="flex items-start gap-2 text-gray-700"><span class="text-[#c4a660] mt-1">•</span> zrozumieć problemy psychologiczne bliskich osób.</li>
-            </ul>
-
-            <div class="mt-8">
-                <a href="diagnoza-i-terapia.html" class="inline-flex items-center gap-2 bg-[#3b4b40] hover:bg-[#2e3b32] text-white font-medium px-6 py-3 rounded-lg text-sm transition-colors">Dowiedz się więcej o diagnozie i terapii <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            </div>
-        </div>
-    </section>
-
+    
 
     <!-- Opinie Section -->
     <section class="fade-section bg-[#9eb2a2] py-12 md:py-13 px-4 md:px-6">
@@ -746,12 +793,12 @@
 
                     <!-- Social -->
                     <div class="flex gap-4 mt-8 justify-center">
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
+                        <a href="https://www.facebook.com/JKSiwek" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
                             <svg class="w-5 h-5 text-[#c4a660] group-hover:text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
+                        <!-- <a href="#" class="w-10 h-10 rounded-full bg-[#c4a660]/20 flex items-center justify-center hover:bg-[#c4a660] transition-colors group">
                             <svg class="w-5 h-5 text-[#c4a660] group-hover:text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -762,7 +809,7 @@
     <footer class="bg-[#0F172A] py-6 px-6">
         <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>Twoja Przemiana &copy; Justyna Siwek 2026</p>
-            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
+            <!-- <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
                 <a href="#start" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
                 <a href="#o-mnie" class="hover:text-[#c4a660] transition-colors">O mnie</a>
                 <a href="rozwoj-osobisty.html" class="hover:text-[#c4a660] transition-colors">Rozwój osobisty</a>
@@ -770,7 +817,7 @@
                 <a href="diagnoza-i-terapia.html" class="hover:text-[#c4a660] transition-colors">Diagnoza i terapia</a>
                 <a href="#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
                 <a href="#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
-            </div>
+            </div> -->
         </div>
     </footer>
 
@@ -902,19 +949,25 @@
         // Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+
+        function setMobileMenu(open) {
+            menuBtn.classList.toggle('active', open);
+            menuBtn.setAttribute('aria-expanded', String(open));
+            menuBtn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+            mobileMenu.classList.toggle('open', open);
+            mobileMenu.setAttribute('aria-hidden', String(!open));
+            mobileMenu.style.display = open ? '' : 'none';
+            if (open) positionMobileMenu();
+        }
+
         menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            const isOpen = mobileMenu.classList.toggle('open');
-            mobileMenu.style.display = isOpen ? '' : 'none';
-            positionMobileMenu();
+            setMobileMenu(!mobileMenu.classList.contains('open'));
         });
 
         // Close mobile menu on link click
         document.querySelectorAll('.nav-link-mobile').forEach(link => {
             link.addEventListener('click', (e) => {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.remove('open');
-                mobileMenu.style.display = 'none';
+                setMobileMenu(false);
                 const href = link.getAttribute('href');
                 if (href && href.startsWith('#') && href.length > 1) {
                     e.preventDefault();
@@ -953,22 +1006,35 @@
             })
             .filter(Boolean);
 
-        function updateActiveNav() {
-            const scrollY = window.scrollY + 120; // account for fixed nav
-            let active = null;
+        function getDocumentTop(element) {
+            let top = 0;
+            let current = element;
+            while (current) {
+                top += current.offsetTop;
+                current = current.offsetParent;
+            }
+            return top;
+        }
 
-            navTargets.forEach(({ link, target }) => {
-                const top = target.offsetTop;
-                if (scrollY >= top - 1) {
-                    active = link;
+        function updateActiveNav() {
+            const marker = window.scrollY + 120;
+            let activeEntry = null;
+
+            navTargets.forEach(entry => {
+                const top = getDocumentTop(entry.target);
+                if (marker >= top - 1 &&
+                    (!activeEntry || top >= activeEntry.top)) {
+                    activeEntry = { link: entry.link, top };
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active', 'border-b-2', 'border-black');
+                link.removeAttribute('aria-current');
             });
-            if (active) {
-                active.classList.add('active', 'border-b-2', 'border-black');
+            if (activeEntry) {
+                activeEntry.link.classList.add('active', 'border-b-2', 'border-black');
+                activeEntry.link.setAttribute('aria-current', 'location');
             }
         }
 
@@ -977,9 +1043,13 @@
         // Shrink navbar on scroll
         const navbarWrap = document.getElementById('navbar-wrap');
         const navbarSpacer = document.getElementById('navbar-spacer');
+        let expandedNavbarHeight = navbarWrap.offsetHeight;
 
         function setNavbarSpacer() {
-            navbarSpacer.style.height = navbarWrap.offsetHeight + 'px';
+            if (!navbarWrap.classList.contains('scrolled')) {
+                expandedNavbarHeight = navbarWrap.offsetHeight;
+            }
+            navbarSpacer.style.height = expandedNavbarHeight + 'px';
         }
         setNavbarSpacer();
         window.addEventListener('resize', setNavbarSpacer);
@@ -989,6 +1059,10 @@
         function positionMobileMenu() {
             mobileMenuEl.style.top = navbarWrap.offsetHeight + 'px';
         }
+        if ('ResizeObserver' in window) {
+            const navbarResizeObserver = new ResizeObserver(positionMobileMenu);
+            navbarResizeObserver.observe(navbarWrap);
+        }
 
         window.addEventListener('scroll', function() {
             if (window.scrollY > 40) {
@@ -996,9 +1070,28 @@
             } else {
                 navbarWrap.classList.remove('scrolled');
             }
-            // update spacer after class toggle (logo hides)
-            requestAnimationFrame(setNavbarSpacer);
+            requestAnimationFrame(positionMobileMenu);
         }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            positionMobileMenu();
+            if (window.innerWidth >= 1200) setMobileMenu(false);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                setMobileMenu(false);
+                menuBtn.focus();
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(event.target) &&
+                !menuBtn.contains(event.target)) {
+                setMobileMenu(false);
+            }
+        });
 
         // Initial positioning and active state
         positionMobileMenu();
