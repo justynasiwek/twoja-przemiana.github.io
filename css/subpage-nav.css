@@ -1,0 +1,93 @@
+.nav-link.active {
+    border-bottom: 2px solid #1d1d1d;
+    color: #000;
+}
+
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+#mobile-menu.open {
+    max-height: 400px;
+    opacity: 1;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.navbar-wrap .hamburger {
+    display: flex;
+}
+
+@media (max-width: 1199px) {
+    #mobile-menu.open {
+        display: block;
+    }
+}
+
+@media (min-width: 1200px) {
+    .desktop-nav {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .navbar-wrap .hamburger,
+    #mobile-menu {
+        display: none !important;
+    }
+}
+
+.hamburger span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+.navbar-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-wrap.scrolled {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-wrap .nav-logo {
+    max-height: 5rem;
+    opacity: 1;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.navbar-wrap.scrolled .nav-logo {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.navbar-wrap .nav-inner {
+    transition: padding 0.35s ease;
+}
+
+.navbar-wrap.scrolled .nav-inner {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}

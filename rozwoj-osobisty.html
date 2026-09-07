@@ -28,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/subpage-nav.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- JSON-LD: Service + Breadcrumbs + FAQ -->
     <script type="application/ld+json">
@@ -111,18 +112,18 @@
     </script>
 </head>
 <body class="font-sans text-[#1d1d1d] bg-white min-h-screen">
-    <header class="border-b border-gray-100">
-        <div class="max-w-[1100px] mx-auto px-6 py-3 flex items-center justify-between">
-            <a href="/" aria-label="Strona główna">
-                <img src="img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="h-12 w-auto">
-            </a>
-            <nav class="hidden md:flex items-center gap-6 text-sm">
-                <a href="/" class="hover:text-[#c4a660]">Strona główna</a>
-                <a href="/#zapisy" class="hover:text-[#c4a660]">Umów termin</a>
-                <a href="/#kontakt" class="hover:text-[#c4a660]">Kontakt</a> 
-            </nav>
-        </div>
-    </header>
+    <!-- Navbar -->
+    <div id="navbar-wrap" class="navbar-wrap">
+        <nav class="nav-inner flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+            <a href="index.html#start"><img src="img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="nav-logo h-14 md:h-20 w-auto"></a>
+            <div class="desktop-nav items-center text-sm font-medium text-gray-800">
+                <a href="index.html#start" class="nav-link pb-1 transition-all">Strona główna</a><a href="index.html#o-mnie" class="nav-link hover:text-black pb-1 transition-all">O mnie</a><a href="diagnoza-i-terapia.html" class="nav-link hover:text-black pb-1 transition-all">Diagnoza i terapia</a><a href="rozwoj-osobisty.html" class="nav-link active pb-1 transition-all" aria-current="page">Rozwój osobisty</a><a href="rozwoj-zawodowy.html" class="nav-link hover:text-black pb-1 transition-all">Rozwój zawodowy</a><a href="index.html#blog" class="nav-link hover:text-black pb-1 transition-all">Blog</a><a href="index.html#zapisy" class="nav-link hover:text-black pb-1 transition-all">Umów termin</a><a href="index.html#kontakt" class="nav-link hover:text-black pb-1 transition-all">Kontakt</a>
+            </div>
+            <button id="mobile-menu-btn" class="hamburger flex-col gap-1.5 p-2" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false"><span class="block w-6 h-0.5 bg-gray-800"></span><span class="block w-6 h-0.5 bg-gray-800"></span><span class="block w-6 h-0.5 bg-gray-800"></span></button>
+        </nav>
+    </div>
+    <div id="navbar-spacer"></div>
+    <div id="mobile-menu" class="bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;" aria-hidden="true"><div class="flex flex-col gap-4 py-4 text-sm font-medium text-gray-800"><a href="index.html#start" class="nav-link-mobile py-1 border-b border-gray-100">Strona główna</a><a href="index.html#o-mnie" class="nav-link-mobile py-1 border-b border-gray-100">O mnie</a><a href="diagnoza-i-terapia.html" class="nav-link-mobile py-1 border-b border-gray-100">Diagnoza i terapia</a><a href="rozwoj-osobisty.html" class="nav-link-mobile py-1 border-b border-gray-100 font-bold" aria-current="page">Rozwój osobisty</a><a href="rozwoj-zawodowy.html" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój zawodowy</a><a href="index.html#blog" class="nav-link-mobile py-1 border-b border-gray-100">Blog</a><a href="index.html#zapisy" class="nav-link-mobile py-1 border-b border-gray-100">Umów termin</a><a href="index.html#kontakt" class="nav-link-mobile py-1">Kontakt</a></div></div>
     <nav aria-label="Okruszki" class="max-w-[1100px] mx-auto px-6 pt-4 text-sm text-gray-500">
         <a href="/" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
         <span class="mx-1">/</span>
@@ -229,13 +230,10 @@ podczas pierwszego spotkania.</p>
     <footer class="bg-[#0F172A] py-6 px-6">
         <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>Twoja Przemiana &copy; Justyna Siwek 2026</p>
-            <div class="flex flex-wrap gap-4 md:gap-6 mt-3 md:mt-0 justify-center">
-                <a href="/" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
-                <a href="/#kontakt" class="hover:text-[#c4a660] transition-colors">Kontakt</a>
-            </div>
         </div>
     </footer>
 
     <script>lucide.createIcons()</script>
+    <script src="subpage-nav.js"></script>
 </body>
 </html>
