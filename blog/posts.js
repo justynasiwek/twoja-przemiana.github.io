@@ -3,6 +3,14 @@
 
 const blogPosts = [
     {
+        slug: "stawianie-granic",
+        title: "Nie-prosty przepis na stawianie granic",
+        date: "1 października 2026",
+        cardImage: "stawianiu_granic-card.jpg",
+        contentImage: "stawianiu_granic.jpg",
+        excerpt: "Proste porady, jak skutecznie stawiać granice, co sprytnego powiedzieć, żeby zadbać o siebie, których jest mnóstwo w social mediach, niestety często nie pomagają."
+    },    
+	{
         slug: "jak-upewnianie-sie-moze-obnizac-samoocene",
         title: "Jak upewnianie się może obniżać samoocenę?",
         date: "31 sierpnia 2026",
