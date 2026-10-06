@@ -20,11 +20,11 @@ const blogPosts = [
     },
     {
         slug: "toksyczny_szef",
-        title: "Toksyczny szef",
+        title: "Jak poradzić sobie z toksycznym szefem",
         date: "17 sierpnia 2026",
         cardImage: "Toksyk_1500x1000.jpg",
         contentImage: "Toksyk_1200x628.jpg",
-        excerpt: "Czy można pracować tak, żeby nawet toksyczny szef…"
+        excerpt: "Można, tylko że tacy szefowie doceniają nie dobrych i efektywnych pracowników, ale tych, którzy zaspokajają ich potrzeby. Toksyk lubi informatorów, plotkarzy, klakierów oraz osoby dostępne na każde skinienie. Co możesz zrobić…"
     },
     {
         slug: "odpoczynek",
@@ -44,7 +44,7 @@ const blogPosts = [
     },
     {
         slug: "szefowie",
-        title: "Drodzy Szefowie,",
+        title: "Jakim jestem szefem?",
         date: "16 października 2025",
         cardImage: "szefowie.jpg",
         contentImage: "szefowie.webp",
@@ -76,7 +76,7 @@ const blogPosts = [
     },
     {
         slug: "wiosenne-porzadki",
-        title: "Wiosenne porządki",
+        title: "Wiosenne porządki w karierze",
         date: "21 marca 2025",
         cardImage: "porzadki.jpg",
         contentImage: "porzadki.webp",
