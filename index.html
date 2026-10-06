@@ -33,6 +33,7 @@
     
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/blog.css">
        <!-- akuku -->
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -669,11 +670,11 @@
             <div class="flex justify-between items-center mb-10">
                 <h2 class="text-2xl md:text-3xl font-serif font-bold text-[#1f2922] tracking-wide">Blog</h2>
                 <div class="flex items-center gap-3">
-                    <span id="blog-page-info" class="text-sm text-gray-500 mr-1"></span>
-                    <button id="blog-prev" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                    <span id="blog-page-info" data-blog-page-info aria-live="polite" class="text-sm text-gray-500 mr-1"></span>
+                    <button id="blog-prev" data-blog-page="prev" type="button" aria-label="Poprzednia strona bloga" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
                         <i data-lucide="chevron-left" class="w-5 h-5"></i>
                     </button>
-                    <button id="blog-next" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                    <button id="blog-next" data-blog-page="next" type="button" aria-label="Następna strona bloga" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
                         <i data-lucide="chevron-right" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -688,6 +689,18 @@
             <div id="blog-grid-more" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8 relative z-10">
                 <!-- Rendered dynamically from blog/posts.js -->
             </div>
+
+            <nav class="flex justify-end mt-8 relative z-10" aria-label="Strony bloga">
+                <div class="flex items-center gap-3">
+                    <span id="blog-page-info-bottom" data-blog-page-info aria-live="polite" class="text-sm text-gray-500 mr-1"></span>
+                    <button id="blog-prev-bottom" data-blog-page="prev" type="button" aria-label="Poprzednia strona bloga" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="blog-next-bottom" data-blog-page="next" type="button" aria-label="Następna strona bloga" class="w-10 h-10 rounded-full bg-[#dec899] flex items-center justify-center hover:bg-[#c4a660] transition-colors text-black/60 hover:text-black">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </nav>
         </div>
     </section>
 
@@ -832,9 +845,9 @@
         (function() {
             const mainGrid = document.getElementById('blog-grid-main');
             const moreGrid = document.getElementById('blog-grid-more');
-            const prevBtn = document.getElementById('blog-prev');
-            const nextBtn = document.getElementById('blog-next');
-            const pageInfo = document.getElementById('blog-page-info');
+            const prevButtons = document.querySelectorAll('[data-blog-page="prev"]');
+            const nextButtons = document.querySelectorAll('[data-blog-page="next"]');
+            const pageIndicators = document.querySelectorAll('[data-blog-page-info]');
             if (!mainGrid || !moreGrid || typeof blogPosts === 'undefined') return;
 
             const PER_PAGE = 7; // 3 large + 4 small
@@ -851,7 +864,7 @@
                 mainGrid.innerHTML = mainPosts.map(post => `
                     <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
                         <div class="overflow-hidden">
-                            <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" width="960" height="600" class="blog-card-image group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-8">
                             <p class="text-xs text-[#c4a660] font-semibold uppercase mb-2">${post.date}</p>
@@ -868,7 +881,7 @@
                     moreGrid.innerHTML = morePosts.map(post => `
                         <a href="blog/${post.slug}.html" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group block">
                             <div class="overflow-hidden">
-                                <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="blog/img/${post.cardImage}" alt="${post.title}" loading="lazy" width="960" height="600" class="blog-card-image group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-5">
                                 <p class="text-xs text-[#c4a660] font-semibold mb-1">${post.date}</p>
@@ -880,28 +893,28 @@
                     moreGrid.style.display = 'none';
                 }
 
-                // Update button states
-                prevBtn.style.opacity = page <= 1 ? '0.4' : '1';
-                prevBtn.style.pointerEvents = page <= 1 ? 'none' : 'auto';
-                nextBtn.style.opacity = page >= totalPages ? '0.4' : '1';
-                nextBtn.style.pointerEvents = page >= totalPages ? 'none' : 'auto';
-
-                // Page indicator (only show if more than 1 page)
-                if (totalPages > 1) {
-                    pageInfo.textContent = page + ' / ' + totalPages;
-                } else {
-                    pageInfo.textContent = '';
-                    prevBtn.style.display = 'none';
-                    nextBtn.style.display = 'none';
-                }
+                // Keep the controls above and below the cards synchronized.
+                prevButtons.forEach(button => {
+                    button.disabled = page <= 1;
+                    button.style.opacity = button.disabled ? '0.4' : '1';
+                    button.hidden = totalPages <= 1;
+                });
+                nextButtons.forEach(button => {
+                    button.disabled = page >= totalPages;
+                    button.style.opacity = button.disabled ? '0.4' : '1';
+                    button.hidden = totalPages <= 1;
+                });
+                pageIndicators.forEach(info => {
+                    info.textContent = totalPages > 1 ? page + ' / ' + totalPages : '';
+                });
             }
 
-            prevBtn.addEventListener('click', () => {
+            prevButtons.forEach(button => button.addEventListener('click', () => {
                 if (currentPage > 1) renderBlogPage(currentPage - 1);
-            });
-            nextBtn.addEventListener('click', () => {
+            }));
+            nextButtons.forEach(button => button.addEventListener('click', () => {
                 if (currentPage < totalPages) renderBlogPage(currentPage + 1);
-            });
+            }));
 
             renderBlogPage(1);
         })();

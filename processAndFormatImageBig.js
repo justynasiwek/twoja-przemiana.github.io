@@ -1,5 +1,5 @@
 /**
- * Kadruje obraz nagłówka wpisu do formatu 2,7:1 i zwraca WebP 1350 na 500 px.
+ * Kadruje obraz nagłówka wpisu do formatu 1,6:1 i zwraca WebP 960 na 600 px.
  * Obraz jest przycinany symetrycznie od środka, bez rozciągania i bez pustych pól.
  *
  * @param {string|Blob} imageSource Adres obrazu albo plik wybrany z dysku.
@@ -20,8 +20,8 @@ function processAndFormatImageBig(imageSource) {
         }
 
         image.onload = () => {
-            const targetWidth = 1350;
-            const targetHeight = 500;
+            const targetWidth = 960;
+            const targetHeight = 600;
             const targetRatio = targetWidth / targetHeight;
             const sourceRatio = image.naturalWidth / image.naturalHeight;
             let sourceX = 0;

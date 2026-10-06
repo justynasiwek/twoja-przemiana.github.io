@@ -3,113 +3,14 @@
 const STORAGE_KEY = "twoja-przemiana-generator-posts-v1";
 const SITE_ORIGIN = "https://www.twoja-przemiana.pl";
 
-const BASE_POSTS = [
-    {
-        slug: "toksyczny_szef",
-        title: "Toksyczny szef",
-        isoDate: "2026-08-17",
-        date: "17 sierpnia 2026",
-        cardImage: "Toksyk_1500x1000.jpg",
-        contentImage: "Toksyk_1200x628.jpg",
-        excerpt: "Czy można pracować tak, żeby nawet toksyczny szef…"
-    },
-    {
-        slug: "odpoczynek",
-        title: "Czy dajemy sobie prawo do odpoczynku?",
-        isoDate: "2026-08-12",
-        date: "12 sierpnia 2026",
-        cardImage: "odpoczynek-card.jpg",
-        contentImage: "odpoczynek.webp",
-        excerpt: "Dlaczego tak trudno naprawdę odpocząć i skąd bierze się przekonanie, że relaks trzeba sobie zasłużyć?"
-    },
-    {
-        slug: "wiosna",
-        title: "Wiosna przychodzi do każdego, ale nie każdy ją czuje…",
-        isoDate: "2026-03-11",
-        date: "11 marca 2026",
-        cardImage: "wiosna.jpg",
-        contentImage: "wiosna.webp",
-        excerpt: "Wiosna przychodzi do każdego, ale nie każdy ją czuje…"
-    },
-    {
-        slug: "szefowie",
-        title: "Drodzy Szefowie,",
-        isoDate: "2025-10-16",
-        date: "16 października 2025",
-        cardImage: "szefowie.jpg",
-        contentImage: "szefowie.webp",
-        excerpt: "z okazji Waszego święta, proponuję chwilę na refleksję pod hasłem „Jakim jestem szefem?"
-    },
-    {
-        slug: "wypalenie-zawodowe",
-        title: "Wypalenie zawodowe, czy powakacyjne rozleniwienie?",
-        isoDate: "2025-09-01",
-        date: "1 września 2025",
-        cardImage: "wypalenie.jpg",
-        contentImage: "wypalenie.webp",
-        excerpt: "Wracasz po urlopie do pracy i czujesz, że masz dość? Czy to już wypalenie zawodowe, czy tylko przejściowy kryzys?"
-    },
-    {
-        slug: "pracoholizm",
-        title: "Kiedy praca staje się obsesją…",
-        isoDate: "2025-04-14",
-        date: "14 kwietnia 2025",
-        cardImage: "pracoholizm.jpg",
-        contentImage: "pracoholizm.webp",
-        excerpt: "Jeśli dużo pracujemy, po czym poznać, czy już wpadliśmy w pułapkę pracoholizmu?"
-    },
-    {
-        slug: "menedzerowie-nie-doceniaja",
-        title: "Dlaczego menedżerowie nie doceniają…",
-        isoDate: "2025-04-09",
-        date: "9 kwietnia 2025",
-        cardImage: "menedzer.jpg",
-        contentImage: "menedzer.webp",
-        excerpt: "Utarło się przekonanie, że pracownicy potrzebują pochwały lub kary. Czy systemy motywacyjne naprawdę działają?"
-    },
-    {
-        slug: "wiosenne-porzadki",
-        title: "Wiosenne porządki",
-        isoDate: "2025-03-21",
-        date: "21 marca 2025",
-        cardImage: "porzadki.jpg",
-        contentImage: "porzadki.webp",
-        excerpt: "Nasza kariera zawodowa i sytuacja w pracy są warte chwili uwagi, a być może także poukładania na nowo."
-    },
-    {
-        slug: "szczescie",
-        title: "Szczęście",
-        isoDate: "2025-03-12",
-        date: "12 marca 2025",
-        cardImage: "szczescie.jpg",
-        contentImage: "szczescie.webp",
-        excerpt: "Cóż to jest szczęście i od czego zależy, czy jesteśmy szczęśliwi? Kilka przemyśleń z okazji Międzynarodowego Dnia Szczęścia."
-    },
-    {
-        slug: "decyzje",
-        title: "Decyzje decyzje",
-        isoDate: "2025-02-09",
-        date: "9 lutego 2025",
-        cardImage: "decyzje.jpg",
-        contentImage: "decyzje.webp",
-        excerpt: "Podejmowanie decyzji życiowych bywa trudne. Jak do tego podejść, aby w przyszłości niczego nie żałować?"
-    },
-    {
-        slug: "pewnosc-siebie",
-        title: "Na jakich filarach oprzeć pewność siebie?",
-        isoDate: "2025-01-08",
-        date: "8 stycznia 2025",
-        cardImage: "pewnosc-siebie.jpg",
-        contentImage: "pewnosc-siebie.webp",
-        excerpt: "Czy można zmienić swój brak pewności siebie? Nie tylko w konkretnej sytuacji, ale tak na stałe?"
-    }
+const POLISH_MONTHS = [
+    "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+    "lipca", "sierpnia", "września", "października", "listopada", "grudnia"
 ];
 
-const EXTRA_SITEMAP_POSTS = [
-    { slug: "jak-rozpoznac-wypalenie-zawodowe", isoDate: "2026-06-15" },
-    { slug: "psycholog-psychoterapeuta-roznice", isoDate: "2026-06-22" },
-    { slug: "ile-trwa-terapia-cbt", isoDate: "2026-06-29" }
-];
+const BASE_POSTS = blogPosts.map(post => ({...post, isoDate: post.isoDate || isoDateFromPolish(post.date)}));
+
+const EXTRA_SITEMAP_POSTS = blogArchivePosts;
 
 const CATEGORY_CTA = {
     osobisty: {
@@ -129,10 +30,7 @@ const CATEGORY_CTA = {
     }
 };
 
-const POLISH_MONTHS = [
-    "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
-    "lipca", "sierpnia", "września", "października", "listopada", "grudnia"
-];
+
 
 const form = document.querySelector("#post-form");
 const titleInput = document.querySelector("#title");
@@ -141,8 +39,7 @@ const contentInput = document.querySelector("#content");
 const excerptInput = document.querySelector("#excerpt");
 const descriptionInput = document.querySelector("#description");
 const categoryInput = document.querySelector("#category");
-const cardImageInput = document.querySelector("#card-image");
-const contentImageInput = document.querySelector("#content-image");
+const imageInput = document.querySelector("#post-image");
 const characterCount = document.querySelector("#character-count");
 const statusBox = document.querySelector("#status");
 const generateButton = document.querySelector("#generate-button");
@@ -150,8 +47,7 @@ const clearHistoryButton = document.querySelector("#clear-history");
 
 dateInput.value = localIsoDate(new Date());
 contentInput.addEventListener("input", updateCharacterCount);
-cardImageInput.addEventListener("change", () => updatePreview(cardImageInput, "#card-preview"));
-contentImageInput.addEventListener("change", () => updatePreview(contentImageInput, "#content-preview"));
+imageInput.addEventListener("change", () => updatePreview(imageInput, "#image-preview"));
 form.addEventListener("submit", generatePackage);
 clearHistoryButton.addEventListener("click", clearHistory);
 updateCharacterCount();
@@ -195,8 +91,7 @@ async function generatePackage(event) {
     const content = contentInput.value.trim();
     const isoDate = dateInput.value;
     const category = categoryInput.value;
-    const cardSource = cardImageInput.files[0];
-    const contentSource = contentImageInput.files[0];
+    const imageSource = imageInput.files[0];
     const slug = slugify(title);
     const savedPosts = loadSavedPosts();
 
@@ -208,16 +103,12 @@ async function generatePackage(event) {
         showStatus("Nie udało się utworzyć poprawnej nazwy pliku z podanego tytułu.", "error");
         return;
     }
-    if (BASE_POSTS.concat(savedPosts).some(post => post.slug === slug)) {
+    if (BASE_POSTS.concat(EXTRA_SITEMAP_POSTS, savedPosts).some(post => post.slug === slug)) {
         showStatus("Wpis o takim tytule już istnieje. Zmień tytuł lub wyczyść historię generatora.", "error");
         return;
     }
-    if (!cardSource || !contentSource) {
-        showStatus("Wybierz dwa obrazy.", "error");
-        return;
-    }
-    if (await filesAreIdentical(cardSource, contentSource)) {
-        showStatus("Wybierz dwa różne obrazy. Oba wskazane pliki mają tę samą zawartość.", "error");
+    if (!imageSource) {
+        showStatus("Wybierz obraz wpisu.", "error");
         return;
     }
 
@@ -228,33 +119,27 @@ async function generatePackage(event) {
         const plainText = contentToPlainText(content);
         const excerpt = excerptInput.value.trim() || truncateAtWord(plainText, 220);
         const description = descriptionInput.value.trim() || truncateAtWord(plainText, 155);
-        const cardImageName = `${slug}-card.webp`;
-        const contentImageName = `${slug}-post.webp`;
-
-        const [cardImage, articleImage] = await Promise.all([
-            cropToWebp(cardSource, 960, 600),
-            cropToWebp(contentSource, 1350, 500)
-        ]);
+        const imageName = `${slug}.webp`;
+        const image = await cropToWebp(imageSource, 960, 600);
 
         const post = {
             slug,
             title,
             isoDate,
             date: polishDate(isoDate),
-            cardImage: cardImageName,
-            contentImage: contentImageName,
+            cardImage: imageName,
+            contentImage: imageName,
             excerpt,
             description,
             category
         };
         const nextSavedPosts = [post, ...savedPosts];
-        const allPosts = [...nextSavedPosts, ...BASE_POSTS]
+        const allPosts = [...new Map([...nextSavedPosts, ...BASE_POSTS].map(post => [post.slug, post])).values()]
             .sort((a, b) => b.isoDate.localeCompare(a.isoDate));
 
         const files = [
             { name: `blog/${slug}.html`, data: buildPostHtml(post, content) },
-            { name: `blog/img/${cardImageName}`, data: cardImage },
-            { name: `blog/img/${contentImageName}`, data: articleImage },
+            { name: `blog/img/${imageName}`, data: image },
             { name: "blog/posts.js", data: buildPostsJs(allPosts) },
             { name: "sitemap.xml", data: buildSitemap(nextSavedPosts) },
             { name: `blog/szkice/${slug}.txt`, data: buildDraft(post, content) },
@@ -339,31 +224,63 @@ function buildPostHtml(post, content) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="stylesheet" href="../css/subpage-nav.css">
+    <link rel="stylesheet" href="../css/blog.css">
     <style>html { scroll-behavior: smooth; }</style>
     <script type="application/ld+json">${jsonLd}</script>
     <script type="application/ld+json">${breadcrumbs}</script>
 </head>
 <body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
-    <nav class="flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
-        <a href="../index.html"><img src="../img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="h-14 md:h-20 w-auto"></a>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
-            <a href="../index.html" class="hover:text-black pb-1 transition-all">Strona główna</a>
-            <a href="../index.html#o-mnie" class="hover:text-black pb-1 transition-all">O mnie</a>
-            <a href="../index.html#rozwoj" class="hover:text-black pb-1 transition-all">Rozwój</a>
-            <a href="../index.html#diagnoza" class="hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
-            <a href="../index.html#zapisy" class="hover:text-black pb-1 transition-all">Umów termin</a>
-            <a href="../index.html#blog" class="border-b-2 border-black pb-1 transition-all">Blog</a>
-            <a href="../index.html#kontakt" class="hover:text-black pb-1 transition-all">Kontakt</a>
+    <div id="navbar-wrap" class="navbar-wrap">
+    <nav class="nav-inner flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="../index.html#start">
+                <img src="../img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="nav-logo h-14 md:h-20 w-auto">
+            </a>
         </div>
+        <!-- Desktop Nav -->
+        <div class="desktop-nav items-center text-sm font-medium text-gray-800">
+            <a href="../index.html#start" class="nav-link pb-1 transition-all">Strona główna</a>
+            <a href="../index.html#o-mnie" class="nav-link hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="../index.html#diagnoza" class="nav-link hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="../index.html#rozwoj_osobisty" class="nav-link hover:text-black pb-1 transition-all">Rozwój osobisty</a>
+            <a href="../index.html#rozwoj-zawodowy" class="nav-link hover:text-black pb-1 transition-all">Rozwój zawodowy</a>
+            <a href="../index.html#blog" class="nav-link active hover:text-black pb-1 transition-all" aria-current="page">Blog</a>
+            <a href="../index.html#zapisy" class="nav-link hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="../index.html#kontakt" class="nav-link hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="hamburger flex-col gap-1.5 p-2" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
     </nav>
+    </div><!-- /navbar-wrap -->
+    <!-- Spacer for fixed navbar -->
+    <div id="navbar-spacer"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;" aria-hidden="true">
+        <div class="flex flex-col gap-4 py-4 text-sm font-medium text-gray-800">
+            <a href="../index.html#start" class="nav-link-mobile py-1 border-b border-gray-100">Strona główna</a>
+            <a href="../index.html#o-mnie" class="nav-link-mobile py-1 border-b border-gray-100">O mnie</a>
+            <a href="../index.html#diagnoza" class="nav-link-mobile py-1 border-b border-gray-100">Diagnoza i terapia</a>
+            <a href="../index.html#rozwoj_osobisty" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój osobisty</a>
+            <a href="../index.html#rozwoj-zawodowy" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój zawodowy</a>
+            <a href="../index.html#blog" class="nav-link-mobile py-1 border-b border-gray-100 font-bold" aria-current="page">Blog</a>
+            <a href="../index.html#zapisy" class="nav-link-mobile py-1 border-b border-gray-100">Umów termin</a>
+            <a href="../index.html#kontakt" class="nav-link-mobile py-1">Kontakt</a>
+        </div>
+    </div>
     <article class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
         <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
             <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
             <span>/</span><a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
             <span>/</span><span class="text-gray-800">${titleShort}</span>
         </div>
-        <div class="rounded-2xl overflow-hidden mb-8">
-            <img src="img/${escapeHtml(post.contentImage)}" alt="${title}" class="w-full h-64 md:h-96 object-cover">
+        <div class="blog-hero rounded-2xl overflow-hidden mb-8">
+            <img src="img/${escapeHtml(post.contentImage)}" alt="${title}" width="960" height="600">
         </div>
         <div class="mb-6">
             <p class="text-sm text-[#c4a660] font-semibold uppercase mb-3">${escapeHtml(post.date)} · Justyna Siwek</p>
@@ -378,9 +295,11 @@ ${contentToHtml(content)}
             <a href="${cta.href}" class="inline-block bg-[#3b4b40] hover:bg-[#2e3b32] text-white font-medium px-5 py-3 rounded-lg text-sm transition-colors mr-3 mb-2">${escapeHtml(cta.label)}</a>
             <a href="../index.html#zapisy" class="inline-block border border-[#3b4b40] text-[#3b4b40] hover:bg-[#3b4b40] hover:text-white font-medium px-5 py-3 rounded-lg text-sm transition-colors mb-2">Umów wizytę</a>
         </div>
-        <div class="mt-12 pt-8 border-t border-gray-200">
-            <a href="../index.html#blog" class="inline-flex items-center gap-2 text-[#c4a660] hover:text-[#b09455] font-medium transition-colors">← Wróć do bloga</a>
-        </div>
+        <nav class="blog-post-navigation mt-12 pt-8 border-t border-gray-200" aria-label="Nawigacja między wpisami">
+            <a href="../index.html#blog" class="blog-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M5 12h14"/></svg> Wróć do bloga</a>
+            <a data-blog-prev rel="prev" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M5 12h14"/></svg> poprzedni</a>
+            <a data-blog-next rel="next" hidden>następny <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5 7 7-7 7"/><path d="M5 12h14"/></svg></a>
+        </nav>
     </article>
     <footer class="bg-[#0F172A] py-6 px-6 mt-12">
         <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
@@ -394,6 +313,9 @@ ${contentToHtml(content)}
             </div>
         </div>
     </footer>
+    <script src="../subpage-nav.js"></script>
+    <script src="posts.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>
 `;
@@ -445,7 +367,7 @@ function buildPostsJs(posts) {
     const entries = posts.map(post => {
         return `    {\n        slug: ${JSON.stringify(post.slug)},\n        title: ${JSON.stringify(post.title)},\n        date: ${JSON.stringify(post.date)},\n        cardImage: ${JSON.stringify(post.cardImage)},\n        contentImage: ${JSON.stringify(post.contentImage)},\n        excerpt: ${JSON.stringify(post.excerpt)}\n    }`;
     }).join(",\n");
-    return `// Dane postów na blogu twoja-przemiana.pl\n// Każdy wpis korzysta z osobnego obrazu karty i obrazu w treści.\n\nconst blogPosts = [\n${entries}\n];\n`;
+    return `// Dane postów na blogu twoja-przemiana.pl\n// Nowe wpisy używają jednego obrazu 960 na 600 px na karcie i w artykule.\n\nconst blogPosts = [\n${entries}\n];\n\nconst blogArchivePosts = ${JSON.stringify(EXTRA_SITEMAP_POSTS, null, 4)};\n`;
 }
 
 function buildSitemap(savedPosts) {
@@ -472,7 +394,7 @@ function buildSitemap(savedPosts) {
 }
 
 function buildDraft(post, content) {
-    return `Tytuł: ${post.title}\nSlug: ${post.slug}\nData: ${post.isoDate}\nObrazek karta: ${post.cardImage}\nObrazek wpis: ${post.contentImage}\nZajawka: ${post.excerpt}\nOpis: ${post.description}\nKategoria: ${post.category}\n\n${content}\n`;
+    return `Tytuł: ${post.title}\nSlug: ${post.slug}\nData: ${post.isoDate}\nObrazek: ${post.contentImage}\nZajawka: ${post.excerpt}\nOpis: ${post.description}\nKategoria: ${post.category}\n\n${content}\n`;
 }
 
 function buildUploadInstructions(post) {
@@ -538,21 +460,6 @@ async function loadImage(file) {
     });
 }
 
-async function filesAreIdentical(first, second) {
-    if (first.size !== second.size) {
-        return false;
-    }
-    const [firstBuffer, secondBuffer] = await Promise.all([first.arrayBuffer(), second.arrayBuffer()]);
-    const a = new Uint8Array(firstBuffer);
-    const b = new Uint8Array(secondBuffer);
-    for (let index = 0; index < a.length; index += 1) {
-        if (a[index] !== b[index]) {
-            return false;
-        }
-    }
-    return true;
-}
-
 function slugify(value) {
     const replacements = { ł: "l", đ: "d", ø: "o", ß: "ss", æ: "ae", œ: "oe" };
     return value
@@ -564,6 +471,11 @@ function slugify(value) {
         .replace(/^-+|-+$/g, "")
         .slice(0, 80)
         .replace(/-+$/g, "");
+}
+
+function isoDateFromPolish(value) {
+    const [day, month, year] = value.split(" ");
+    return `${year}-${String(POLISH_MONTHS.indexOf(month) + 1).padStart(2, "0")}-${day.padStart(2, "0")}`;
 }
 
 function polishDate(isoDate) {

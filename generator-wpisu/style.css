@@ -177,7 +177,7 @@ textarea:focus {
 
 .image-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 600px);
     gap: 22px;
 }
 
@@ -198,10 +198,6 @@ textarea:focus {
 
 .preview-card {
     aspect-ratio: 1.6 / 1;
-}
-
-.preview-content {
-    aspect-ratio: 2.7 / 1;
 }
 
 .preview img {

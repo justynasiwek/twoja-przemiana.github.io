@@ -13,16 +13,18 @@
     <meta property="og:title" content="Jak upewnianie się może obniżać samoocenę? – Twoja Przemiana">
     <meta property="og:description" content="Budowanie samooceny do złożony proces i jest wiele czynników, które mogą ją obniżać, takich jak...">
     <meta property="og:url" content="https://www.twoja-przemiana.pl/blog/jak-upewnianie-sie-moze-obnizac-samoocene.html">
-    <meta property="og:image" content="https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-card.webp">
+    <meta property="og:image" content="https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-960x600.jpg">
     <meta property="article:published_time" content="2026-08-31T00:00:00+02:00">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jak upewnianie się może obniżać samoocenę? – Twoja Przemiana">
     <meta name="twitter:description" content="Budowanie samooceny do złożony proces i jest wiele czynników, które mogą ją obniżać, takich jak...">
-    <meta name="twitter:image" content="https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-card.webp">
+    <meta name="twitter:image" content="https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-960x600.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="stylesheet" href="../css/subpage-nav.css">
+    <link rel="stylesheet" href="../css/blog.css">
 	<style>
 	li {
   display: list-item;
@@ -33,30 +35,63 @@ li::marker {
 }
 </style>
     <style>html { scroll-behavior: smooth; }</style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.twoja-przemiana.pl/blog/jak-upewnianie-sie-moze-obnizac-samoocene.html"},"headline":"Jak upewnianie się może obniżać samoocenę?","description":"Budowanie samooceny do złożony proces i jest wiele czynników, które mogą ją obniżać, takich jak...","image":["https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-post.webp"],"author":{"@type":"Person","@id":"https://www.twoja-przemiana.pl/#justyna-siwek","name":"Justyna Siwek"},"publisher":{"@type":"Organization","name":"Twoja Przemiana","logo":{"@type":"ImageObject","url":"https://www.twoja-przemiana.pl/img/logo.png"}},"datePublished":"2026-08-31","dateModified":"2026-08-31","inLanguage":"pl-PL"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.twoja-przemiana.pl/blog/jak-upewnianie-sie-moze-obnizac-samoocene.html"},"headline":"Jak upewnianie się może obniżać samoocenę?","description":"Budowanie samooceny do złożony proces i jest wiele czynników, które mogą ją obniżać, takich jak...","image":["https://www.twoja-przemiana.pl/blog/img/jak-upewnianie-sie-moze-obnizac-samoocene-960x600.jpg"],"author":{"@type":"Person","@id":"https://www.twoja-przemiana.pl/#justyna-siwek","name":"Justyna Siwek"},"publisher":{"@type":"Organization","name":"Twoja Przemiana","logo":{"@type":"ImageObject","url":"https://www.twoja-przemiana.pl/img/logo.png"}},"datePublished":"2026-08-31","dateModified":"2026-08-31","inLanguage":"pl-PL"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://www.twoja-przemiana.pl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.twoja-przemiana.pl/#blog"},{"@type":"ListItem","position":3,"name":"Jak upewnianie się może obniżać samoocenę?","item":"https://www.twoja-przemiana.pl/blog/jak-upewnianie-sie-moze-obnizac-samoocene.html"}]}</script>
 </head>
 <body class="font-sans text-[#1d1d1d] bg-white min-h-screen overflow-x-hidden">
-    <nav class="flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
-        <a href="../index.html"><img src="../img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="h-14 md:h-20 w-auto"></a>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-800">
-            <a href="../index.html" class="hover:text-black pb-1 transition-all">Strona główna</a>
-            <a href="../index.html#o-mnie" class="hover:text-black pb-1 transition-all">O mnie</a>
-            <a href="../index.html#rozwoj" class="hover:text-black pb-1 transition-all">Rozwój</a>
-            <a href="../index.html#diagnoza" class="hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
-            <a href="../index.html#zapisy" class="hover:text-black pb-1 transition-all">Umów termin</a>
-            <a href="../index.html#blog" class="border-b-2 border-black pb-1 transition-all">Blog</a>
-            <a href="../index.html#kontakt" class="hover:text-black pb-1 transition-all">Kontakt</a>
+
+    <!-- Navbar -->
+    <div id="navbar-wrap" class="navbar-wrap">
+    <nav class="nav-inner flex justify-between items-center px-6 py-1 max-w-[1100px] mx-auto bg-white relative z-50">
+        <div class="flex items-center gap-3">
+            <a href="../index.html#start">
+                <img src="../img/logo.webp" alt="Twoja Przemiana - Justyna Siwek" class="nav-logo h-14 md:h-20 w-auto">
+            </a>
         </div>
+        <!-- Desktop Nav -->
+        <div class="desktop-nav items-center text-sm font-medium text-gray-800">
+            <a href="../index.html#start" class="nav-link pb-1 transition-all">Strona główna</a>
+            <a href="../index.html#o-mnie" class="nav-link hover:text-black pb-1 transition-all">O mnie</a>
+            <a href="../index.html#diagnoza" class="nav-link hover:text-black pb-1 transition-all">Diagnoza i terapia</a>
+            <a href="../index.html#rozwoj_osobisty" class="nav-link hover:text-black pb-1 transition-all">Rozwój osobisty</a>
+            <a href="../index.html#rozwoj-zawodowy" class="nav-link hover:text-black pb-1 transition-all">Rozwój zawodowy</a>
+            <a href="../index.html#blog" class="nav-link active hover:text-black pb-1 transition-all" aria-current="page">Blog</a>
+            <a href="../index.html#zapisy" class="nav-link hover:text-black pb-1 transition-all">Umów termin</a>
+            <a href="../index.html#kontakt" class="nav-link hover:text-black pb-1 transition-all">Kontakt</a>
+        </div>
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="hamburger flex-col gap-1.5 p-2" type="button" aria-label="Otwórz menu" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+        </button>
     </nav>
+    </div><!-- /navbar-wrap -->
+    <!-- Spacer for fixed navbar -->
+    <div id="navbar-spacer"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="bg-white border-t border-gray-100 px-6 max-w-[1100px] mx-auto z-40 fixed left-0 right-0" style="top:0; display:none;" aria-hidden="true">
+        <div class="flex flex-col gap-4 py-4 text-sm font-medium text-gray-800">
+            <a href="../index.html#start" class="nav-link-mobile py-1 border-b border-gray-100">Strona główna</a>
+            <a href="../index.html#o-mnie" class="nav-link-mobile py-1 border-b border-gray-100">O mnie</a>
+            <a href="../index.html#diagnoza" class="nav-link-mobile py-1 border-b border-gray-100">Diagnoza i terapia</a>
+            <a href="../index.html#rozwoj_osobisty" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój osobisty</a>
+            <a href="../index.html#rozwoj-zawodowy" class="nav-link-mobile py-1 border-b border-gray-100">Rozwój zawodowy</a>
+            <a href="../index.html#blog" class="nav-link-mobile py-1 border-b border-gray-100 font-bold" aria-current="page">Blog</a>
+            <a href="../index.html#zapisy" class="nav-link-mobile py-1 border-b border-gray-100">Umów termin</a>
+            <a href="../index.html#kontakt" class="nav-link-mobile py-1">Kontakt</a>
+        </div>
+    </div>
+
     <article class="max-w-[1100px] mx-auto px-4 md:px-6 py-8 md:py-12">
         <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
             <a href="../index.html" class="hover:text-[#c4a660] transition-colors">Strona główna</a>
             <span>/</span><a href="../index.html#blog" class="hover:text-[#c4a660] transition-colors">Blog</a>
             <span>/</span><span class="text-gray-800">Jak upewnianie się może obniżać…</span>
         </div>
-        <div class="rounded-2xl overflow-hidden mb-8">
-            <img src="img/jak-upewnianie-sie-moze-obnizac-samoocene-post.webp" alt="Jak upewnianie się może obniżać samoocenę?" class="w-full h-64 md:h-96 object-cover">
+        <div class="blog-hero rounded-2xl overflow-hidden mb-8">
+            <img src="img/jak-upewnianie-sie-moze-obnizac-samoocene-960x600.jpg" alt="Jak upewnianie się może obniżać samoocenę?" width="960" height="600">
         </div>
         <div class="mb-6">
             <p class="text-sm text-[#c4a660] font-semibold uppercase mb-3">31 sierpnia 2026 · Justyna Siwek</p>
@@ -89,9 +124,11 @@ li::marker {
             <a href="../rozwoj-osobisty.html" class="inline-block bg-[#3b4b40] hover:bg-[#2e3b32] text-white font-medium px-5 py-3 rounded-lg text-sm transition-colors mr-3 mb-2">Więcej o rozwoju osobistym</a>
             <a href="../index.html#zapisy" class="inline-block border border-[#3b4b40] text-[#3b4b40] hover:bg-[#3b4b40] hover:text-white font-medium px-5 py-3 rounded-lg text-sm transition-colors mb-2">Umów wizytę</a>
         </div>
-        <div class="mt-12 pt-8 border-t border-gray-200">
-            <a href="../index.html#blog" class="inline-flex items-center gap-2 text-[#c4a660] hover:text-[#b09455] font-medium transition-colors">← Wróć do bloga</a>
-        </div>
+        <nav class="blog-post-navigation mt-12 pt-8 border-t border-gray-200" aria-label="Nawigacja między wpisami">
+            <a href="../index.html#blog" class="blog-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M5 12h14"/></svg> Wróć do bloga</a>
+            <a data-blog-prev rel="prev" hidden><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M5 12h14"/></svg> poprzedni</a>
+            <a data-blog-next rel="next" hidden>następny <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5 7 7-7 7"/><path d="M5 12h14"/></svg></a>
+        </nav>
     </article>
     <footer class="bg-[#0F172A] py-6 px-6 mt-12">
         <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
@@ -105,5 +142,8 @@ li::marker {
             </div>
         </div>
     </footer>
+    <script src="../subpage-nav.js"></script>
+    <script src="posts.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>
