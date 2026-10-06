@@ -26,7 +26,7 @@ const blogPosts = [
         contentImage: "Toksyk_1200x628.jpg",
         excerpt: "Można, tylko że tacy szefowie doceniają nie dobrych i efektywnych pracowników, ale tych, którzy zaspokajają ich potrzeby. Toksyk lubi informatorów, plotkarzy, klakierów oraz osoby dostępne na każde skinienie. Co możesz zrobić…"
     },
-    {
+    { 
         slug: "odpoczynek",
         title: "Czy dajemy sobie prawo do odpoczynku?",
         date: "12 sierpnia 2026",
